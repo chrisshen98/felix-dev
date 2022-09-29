@@ -97,6 +97,14 @@ public class RepositoryAdminImpl implements RepositoryAdmin
     {
         return addRepository(url, Integer.MAX_VALUE);
     }
+    
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
 
     public synchronized RepositoryImpl addRepository(final URL url, int hopCount) throws Exception
     {
@@ -115,6 +123,7 @@ public class RepositoryAdminImpl implements RepositoryAdmin
                 }
             });
             m_repoMap.put(url.toExternalForm(), repository);
+            System.out.println("[CTEST][GET-PARAM] " + url.toExternalForm() + getStackTrace());
 
             // resolve referrals
             hopCount--;

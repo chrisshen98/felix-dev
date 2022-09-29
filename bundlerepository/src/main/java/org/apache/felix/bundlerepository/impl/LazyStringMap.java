@@ -41,10 +41,19 @@ public class LazyStringMap<V> extends StringArrayMap<V>
         super(capacity);
     }
 
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public V get(Object key)
     {
+        System.out.println("[CTEST][GET-PARAM] " + (String) key + getStackTrace());
         V val = super.get(key);
         if (val instanceof LazyValue) {
             val = ((LazyValue<V>) val).compute();

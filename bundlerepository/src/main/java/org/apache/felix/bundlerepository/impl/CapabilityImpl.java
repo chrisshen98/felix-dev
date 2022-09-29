@@ -72,12 +72,21 @@ public class CapabilityImpl implements Capability
         return m_propList.toArray(new Property[m_propList.size()]);
     }
 
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
+
     public void addProperty(Property prop)
     {
         // m_map.put(prop.getName().toLowerCase(), prop.getConvertedValue()); // TODO is toLowerCase() on the key the right thing to do?
         // However if we definitely need to re-enable the to-lowercasing, the Felix Util FilterImpl supports treating filters
         // case-insensitively
         m_attributes.put(prop.getName(), prop.getConvertedValue());
+        System.out.println("[CTEST][GET-PARAM] " + prop.getName() + getStackTrace());
         m_propList.add(prop);
     }
 
@@ -98,6 +107,7 @@ public class CapabilityImpl implements Capability
 
     public void addDirective(String key, String value) {
         m_directives.put(key, value);
+        System.out.println("[CTEST][GET-PARAM] " + key + getStackTrace());
     }
 
     public Map<String, String> getDirectives() {
