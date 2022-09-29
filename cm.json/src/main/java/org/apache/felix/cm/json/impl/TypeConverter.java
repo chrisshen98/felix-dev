@@ -252,13 +252,23 @@ public class TypeConverter {
             this.value = value;
         }
 
+        public static String getStackTrace() {
+            String stackTrace = " ";
+            for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+                stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+            }
+            return stackTrace;
+        }
+
         @Override
         public String getKey() {
+            System.out.println("[CTEST][GET-PARAM] " + this.type + getStackTrace());
             return this.type;
         }
 
         @Override
         public JsonValue getValue() {
+            System.out.println("[CTEST][GET-PARAM] " + this.value + getStackTrace());
             return this.value;
         }
 
