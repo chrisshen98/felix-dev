@@ -66,6 +66,7 @@ public class LazyStringMap<V> extends StringArrayMap<V>
     }
 
     public void putLazy(String key, LazyValue<V> lazy) {
+        System.out.println("[CTEST][SET-PARAM] " + (String) key + getStackTrace());
         super.doPut(key, lazy);
     }
 

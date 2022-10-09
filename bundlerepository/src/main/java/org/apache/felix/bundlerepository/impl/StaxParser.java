@@ -220,7 +220,7 @@ public class StaxParser extends RepositoryParser
         {
             for (int i = 0, nb = reader.getAttributeCount(); i < nb; i++)
             {
-                System.out.println("[CTEST][GET-PARAM] " + reader.getAttributeLocalName(i) + getStackTrace());
+                System.out.println("[CTEST][SET-PARAM] " + reader.getAttributeLocalName(i) + getStackTrace());
                 resource.put(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
             }
             int event;
@@ -263,7 +263,7 @@ public class StaxParser extends RepositoryParser
                     }
                     if (sb != null)
                     {
-                        System.out.println("[CTEST][GET-PARAM] " + element + getStackTrace());
+                        System.out.println("[CTEST][SET-PARAM] " + element + getStackTrace());
                         resource.put(element, sb.toString().trim(), type);
                     }
                 }

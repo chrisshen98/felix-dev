@@ -111,19 +111,16 @@ public class ResourceImpl implements Resource
     public String getPresentationName()
     {
         String pres = (String) m_map.get(PRESENTATION_NAME);
-        System.out.println("[CTEST][GET-PARAM] " + pres + getStackTrace());
         return (pres!=null && !pres.isEmpty())? pres : toString();
     }
 
     public String getSymbolicName()
     {
-        System.out.println("[CTEST][GET-PARAM] " + (String) m_map.get(SYMBOLIC_NAME) + getStackTrace());
         return (String) m_map.get(SYMBOLIC_NAME);
     }
 
     public String getId()
     {
-        System.out.println("[CTEST][GET-PARAM] " + (String) m_map.get(ID) + getStackTrace());
         return (String) m_map.get(ID);
     }
 
@@ -137,7 +134,6 @@ public class ResourceImpl implements Resource
     public String getURI()
     {
         convertURIs();
-        System.out.println("[CTEST][GET-PARAM] " + (String) m_map.get(Resource.URI) + getStackTrace());
         return (String) m_map.get(Resource.URI);
     }
 
@@ -149,7 +145,6 @@ public class ResourceImpl implements Resource
 
         long size = findResourceSize();
         m_map.put(Resource.SIZE, size);
-        System.out.println("[CTEST][GET-PARAM] " + Resource.SIZE + getStackTrace());
         return size;
     }
 
@@ -260,6 +255,7 @@ public class ResourceImpl implements Resource
     public void put(String key, String value, String type)
     {
         key = key.toLowerCase();
+        System.out.println("[CTEST][SET-PARAM] " + resource.getName() + getStackTrace());
         m_hash = 0;
         if (Property.URI.equals(type) || URI.equals(key))
         {

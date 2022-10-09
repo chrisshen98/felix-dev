@@ -86,7 +86,7 @@ public class CapabilityImpl implements Capability
         // However if we definitely need to re-enable the to-lowercasing, the Felix Util FilterImpl supports treating filters
         // case-insensitively
         m_attributes.put(prop.getName(), prop.getConvertedValue());
-        System.out.println("[CTEST][GET-PARAM] " + prop.getName() + getStackTrace());
+        System.out.println("[CTEST][SET-PARAM] " + prop.getName() + getStackTrace());
         m_propList.add(prop);
     }
 
@@ -107,7 +107,7 @@ public class CapabilityImpl implements Capability
 
     public void addDirective(String key, String value) {
         m_directives.put(key, value);
-        System.out.println("[CTEST][GET-PARAM] " + key + getStackTrace());
+        System.out.println("[CTEST][SET-PARAM] " + key + getStackTrace());
     }
 
     public Map<String, String> getDirectives() {

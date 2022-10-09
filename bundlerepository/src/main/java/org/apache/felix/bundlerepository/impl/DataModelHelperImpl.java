@@ -368,7 +368,6 @@ public class DataModelHelperImpl implements DataModelHelper
     private static String getRelativeUri(Resource resource, String name) 
     {
         String uri = (String) resource.getProperties().get(name);
-        System.out.println("[CTEST][GET-PARAM] " + uri + getStackTrace());
         if (resource instanceof ResourceImpl)
         {
             try
@@ -415,14 +414,6 @@ public class DataModelHelperImpl implements DataModelHelper
             .end();
     }
 
-    public static String getStackTrace() {
-        String stackTrace = " ";
-        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
-            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
-        }
-        return stackTrace;
-    }
-
     public Resource createResource(final Bundle bundle)
     {
         final Dictionary dict = bundle.getHeaders();
@@ -431,7 +422,6 @@ public class DataModelHelperImpl implements DataModelHelper
             public String getHeader(String name)
             {   
                 String result = (String) dict.get(name);
-                System.out.println("[CTEST][GET-PARAM] " + result + getStackTrace());
                 return result;
             }
         });
@@ -483,7 +473,6 @@ public class DataModelHelperImpl implements DataModelHelper
                     value = value.substring(1);
                     value = localization.getProperty(value, value);
                 }
-                System.out.println("[CTEST][GET-PARAM] " + value + getStackTrace());
                 return value;
             }
             private byte[] loadEntry(String name) throws IOException
@@ -520,13 +509,11 @@ public class DataModelHelperImpl implements DataModelHelper
                 try {
                     File f = new File(bundleUrl.toURI());
                     resource.put(Resource.SIZE, Long.toString(f.length()), null);
-                    System.out.println("[CTEST][GET-PARAM] " + Resource.SIZE + getStackTrace());
                 } catch (URISyntaxException e) {
                     throw new RuntimeException(e);
                 }
             }
             resource.put(Resource.URI, bundleUrl.toExternalForm(), null);
-            System.out.println("[CTEST][GET-PARAM] " + Resource.URI + getStackTrace());
         }
         return resource;
     }
@@ -558,9 +545,7 @@ public class DataModelHelperImpl implements DataModelHelper
     {
         String bsn = getSymbolicName(headers);
         String v = getVersion(headers);
-
         resource.put(Resource.ID, bsn + "/" + v);
-        // System.out.println("[CTEST][GET-PARAM] " + Resource.getName() + getStackTrace());
         resource.put(Resource.SYMBOLIC_NAME, bsn);
         resource.put(Resource.VERSION, v);
         if (headers.getHeader(Constants.BUNDLE_NAME) != null)
@@ -761,6 +746,7 @@ public class DataModelHelperImpl implements DataModelHelper
         for (int i = 0; attributes != null && i < attributes.length; i++)
         {
             String key = attributes[i].getName();
+            System.out.println("[CTEST][GET-PARAM] " + key + getStackTrace());
             if (key.equalsIgnoreCase(Constants.PACKAGE_SPECIFICATION_VERSION) || key.equalsIgnoreCase(Constants.VERSION_ATTRIBUTE) || key.equalsIgnoreCase("version:Version"))
             {
                 continue;
@@ -828,6 +814,14 @@ public class DataModelHelperImpl implements DataModelHelper
         requirement.setFilter(filter.toString());
     }
 
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
+
     private static Set doImportPackageAttributes(RequirementImpl requirement, StringBuffer filter, Attribute[] attributes)
     {
         HashSet set = new HashSet();
@@ -835,6 +829,7 @@ public class DataModelHelperImpl implements DataModelHelper
         {
             String name = attributes[i].getName();
             String value = attributes[i].getValue();
+            System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
             if (name.equalsIgnoreCase(Constants.PACKAGE_SPECIFICATION_VERSION) || name.equalsIgnoreCase(Constants.VERSION_ATTRIBUTE))
             {
                 continue;

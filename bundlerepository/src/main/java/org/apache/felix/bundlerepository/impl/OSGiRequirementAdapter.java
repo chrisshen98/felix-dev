@@ -27,6 +27,14 @@ class OSGiRequirementAdapter implements Requirement
     private final HashMap<String, String> cleanedDirectives;
     private final String filter;
 
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
+
     public OSGiRequirementAdapter(org.osgi.resource.Requirement requirement)
     {
         this.requirement = requirement;
@@ -34,6 +42,7 @@ class OSGiRequirementAdapter implements Requirement
         String f = requirement.getDirectives().get(Constants.FILTER_DIRECTIVE);
         if (f != null)
         {
+            System.out.println("[CTEST][SET-PARAM] " + r.getName() + getStackTrace());
             for (String ns : NamespaceTranslator.getTranslatedOSGiNamespaces())
             {
                 f = f.replaceAll("[(][ ]*" + ns + "[ ]*=",

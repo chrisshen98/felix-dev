@@ -123,7 +123,7 @@ public class RepositoryAdminImpl implements RepositoryAdmin
                 }
             });
             m_repoMap.put(url.toExternalForm(), repository);
-            System.out.println("[CTEST][GET-PARAM] " + url.toExternalForm() + getStackTrace());
+            System.out.println("[CTEST][SET-PARAM] " + url.toExternalForm() + getStackTrace());
 
             // resolve referrals
             hopCount--;

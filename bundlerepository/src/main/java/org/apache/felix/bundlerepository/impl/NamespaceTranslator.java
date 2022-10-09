@@ -35,10 +35,6 @@ class NamespaceTranslator
         result.put(ServiceNamespace.SERVICE_NAMESPACE, org.apache.felix.bundlerepository.Capability.SERVICE);
         result.put(BundleNamespace.BUNDLE_NAMESPACE, org.apache.felix.bundlerepository.Capability.BUNDLE);
         result.put(HostNamespace.HOST_NAMESPACE, org.apache.felix.bundlerepository.Capability.FRAGMENT);
-        System.out.println("[CTEST][GET-PARAM] " + PackageNamespace.PACKAGE_NAMESPACE + getStackTrace());
-        System.out.println("[CTEST][GET-PARAM] " + ServiceNamespace.SERVICE_NAMESPACE + getStackTrace());
-        System.out.println("[CTEST][GET-PARAM] " + BundleNamespace.BUNDLE_NAMESPACE + getStackTrace());
-        System.out.println("[CTEST][GET-PARAM] " + HostNamespace.HOST_NAMESPACE + getStackTrace());
         return Collections.unmodifiableMap(result);
     }
 
@@ -49,10 +45,6 @@ class NamespaceTranslator
         result.put(org.apache.felix.bundlerepository.Capability.SERVICE, ServiceNamespace.SERVICE_NAMESPACE);
         result.put(org.apache.felix.bundlerepository.Capability.BUNDLE, BundleNamespace.BUNDLE_NAMESPACE);
         result.put(org.apache.felix.bundlerepository.Capability.FRAGMENT, HostNamespace.HOST_NAMESPACE);
-        System.out.println("[CTEST][GET-PARAM] " + org.apache.felix.bundlerepository.Capability.PACKAGE + getStackTrace());
-        System.out.println("[CTEST][GET-PARAM] " + org.apache.felix.bundlerepository.Capability.SERVICE + getStackTrace());
-        System.out.println("[CTEST][GET-PARAM] " + org.apache.felix.bundlerepository.Capability.BUNDLE + getStackTrace());
-        System.out.println("[CTEST][GET-PARAM] " + org.apache.felix.bundlerepository.Capability.FRAGMENT + getStackTrace());
         return Collections.unmodifiableMap(result);
     }
 

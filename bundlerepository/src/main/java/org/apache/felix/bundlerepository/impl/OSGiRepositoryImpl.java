@@ -52,11 +52,20 @@ class OSGiRepositoryImpl implements Repository
         this.repository = repository;
     }
 
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
+
     public Map<Requirement, Collection<Capability>> findProviders(Collection<? extends Requirement> requirements)
     {
         Map<Requirement, Collection<Capability>> m = new HashMap<Requirement, Collection<Capability>>();
         for (Requirement r : requirements)
         {
+            System.out.println("[CTEST][SET-PARAM] " + r.getName() + getStackTrace());
             m.put(r, findProviders(r));
         }
         return m;
@@ -72,6 +81,9 @@ class OSGiRepositoryImpl implements Repository
                 for (org.apache.felix.bundlerepository.Resource res : repo.getResources())
                 {
                     String f = req.getDirectives().get(Namespace.REQUIREMENT_FILTER_DIRECTIVE);
+                    if (f != null) {
+                        System.out.println("[CTEST][GET-PARAM] " + f + getStackTrace());
+                    }
                     try
                     {
                         addResourceForIdentity(res,
