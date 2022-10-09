@@ -255,7 +255,7 @@ public class ResourceImpl implements Resource
     public void put(String key, String value, String type)
     {
         key = key.toLowerCase();
-        System.out.println("[CTEST][SET-PARAM] " + resource.getName() + getStackTrace());
+        System.out.println("[CTEST][SET-PARAM] " + key + getStackTrace());
         m_hash = 0;
         if (Property.URI.equals(type) || URI.equals(key))
         {

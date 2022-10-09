@@ -42,7 +42,7 @@ class OSGiRequirementAdapter implements Requirement
         String f = requirement.getDirectives().get(Constants.FILTER_DIRECTIVE);
         if (f != null)
         {
-            System.out.println("[CTEST][SET-PARAM] " + r.getName() + getStackTrace());
+            System.out.println("[CTEST][SET-PARAM] " + f + getStackTrace());
             for (String ns : NamespaceTranslator.getTranslatedOSGiNamespaces())
             {
                 f = f.replaceAll("[(][ ]*" + ns + "[ ]*=",

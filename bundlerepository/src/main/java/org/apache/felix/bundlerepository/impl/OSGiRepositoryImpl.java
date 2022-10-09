@@ -65,7 +65,7 @@ class OSGiRepositoryImpl implements Repository
         Map<Requirement, Collection<Capability>> m = new HashMap<Requirement, Collection<Capability>>();
         for (Requirement r : requirements)
         {
-            System.out.println("[CTEST][SET-PARAM] " + r.getName() + getStackTrace());
+            // System.out.println("[CTEST][SET-PARAM] " + r.getName() + getStackTrace());
             m.put(r, findProviders(r));
         }
         return m;

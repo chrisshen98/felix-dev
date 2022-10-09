@@ -68,7 +68,7 @@ public class ResolverImpl implements Resolver
     public synchronized void add(Requirement requirement)
     {
         m_resolved = false;
-        System.out.println("[CTEST][SET-PARAM] " + resource.getName() + getStackTrace());
+        System.out.println("[CTEST][SET-PARAM] " + requirement.getName() + getStackTrace());
         m_addedRequirementSet.add(requirement);
     }
 
