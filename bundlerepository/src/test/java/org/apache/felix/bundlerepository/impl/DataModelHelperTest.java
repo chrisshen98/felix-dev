@@ -27,7 +27,7 @@ import org.apache.felix.bundlerepository.Capability;
 import org.apache.felix.bundlerepository.DataModelHelper;
 import org.apache.felix.bundlerepository.Repository;
 import org.apache.felix.bundlerepository.Resource;
-import org.apache.felix.bundlerepository.MyAttribute;
+import org.apache.felix.bundlerepository.MyAttributes;
 import org.apache.felix.utils.manifest.Clause;
 import org.osgi.framework.Constants;
 
@@ -42,7 +42,7 @@ public class DataModelHelperTest extends TestCase
 
     public void testResource() throws Exception
     {
-        MyAttributeImpl attr = new MyAttributeImpl();
+        Attributes attr = new MyAttributesImpl();
         // download Attribute, change putValue
         attr.putValue("Manifest-Version", "1.0");
         attr.putValue("Bundle-Name", "Apache Felix Utils");
@@ -76,7 +76,7 @@ public class DataModelHelperTest extends TestCase
     }
 
     public void testCapabilities() throws Exception {
-        Attributes attr = new Attributes();
+        Attributes attr = new MyAttributesImpl();
         attr.putValue("Manifest-Version", "1.0");
         attr.putValue("Bundle-Name", "Apache Felix Utils");
         attr.putValue("Bundle-Version", "0.1.0.SNAPSHOT");
