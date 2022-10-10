@@ -66,7 +66,7 @@ public class FelixRequirementAdapterTest extends TestCase
 
         FelixRequirementAdapter adapter = new FelixRequirementAdapter(requirement, resource);
 
-        Map<String, String> expected = new HashMap<String, String>();
+        Map<String, String> expected = new MyMapImpl<String, String>();
         expected.put("filter", "(a=b)");
         expected.put("xyz", "abc");
         assertEquals(expected, adapter.getDirectives());

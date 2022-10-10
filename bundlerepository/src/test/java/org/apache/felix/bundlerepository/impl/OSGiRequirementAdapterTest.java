@@ -32,8 +32,8 @@ public class OSGiRequirementAdapterTest extends TestCase
 {
     public void testDirectives()
     {
-        Map<String, Object> attrs = new HashMap<String, Object>();
-        Map<String, String> dirs = new HashMap<String, String>();
+        Map<String, Object> attrs = new MyMapImpl<String, Object>();
+        Map<String, String> dirs = new MyMapImpl<String, String>();
         dirs.put("cardinality", "multiple");
         dirs.put("filter", "(osgi.wiring.package=y)");
         dirs.put("foo", "bar");
@@ -48,7 +48,7 @@ public class OSGiRequirementAdapterTest extends TestCase
         assertTrue(adapter.isOptional());
         assertEquals("package", adapter.getName());
 
-        Map<String, String> expected = new HashMap<String, String>();
+        Map<String, String> expected = new MyMapImpl<String, String>();
         expected.put("foo", "bar");
         expected.put("test", "test");
         assertEquals(expected, adapter.getDirectives());

@@ -28,7 +28,7 @@ public class NamespaceTranslatorTest extends TestCase
 {
     public void testNamespaceTranslator()
     {
-        Map<String, String> expected = new HashMap<String, String>();
+        Map<String, String> expected = new MyMapImpl<String, String>();
         expected.put("osgi.wiring.bundle", "bundle");
         expected.put("osgi.wiring.package", "package");
         expected.put("osgi.wiring.host", "fragment");

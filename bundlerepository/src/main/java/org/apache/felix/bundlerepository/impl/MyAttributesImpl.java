@@ -1,9 +1,8 @@
 package org.apache.felix.bundlerepository.impl;
 
-import org.apache.felix.bundlerepository.MyAttributes;
 import java.util.jar.Attributes;
 
-public class MyAttributesImpl extends Attributes implements MyAttributes{
+public class MyAttributesImpl extends Attributes{
 
     public String getStackTrace() {
         String stackTrace = " ";
@@ -17,6 +16,5 @@ public class MyAttributesImpl extends Attributes implements MyAttributes{
     public String putValue(String name, String value) {
         System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
         return super.putValue(name, value);
-        // return (String)put(new Attributes.Name(name), value);
     }
 }

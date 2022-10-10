@@ -45,8 +45,17 @@ public class RepositoryImpl implements Repository
         m_resources = resources;
     }
 
+    public String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
+    
     public String getURI()
     {
+        System.out.println("[CTEST][GET-PARAM] " + m_uri + getStackTrace());
         return m_uri;
     }
 

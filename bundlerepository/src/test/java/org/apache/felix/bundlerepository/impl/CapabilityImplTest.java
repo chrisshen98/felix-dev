@@ -40,7 +40,7 @@ public class CapabilityImplTest extends TestCase
 
         c.addDirective("Y", "A b C");
 
-        Map<String, String> expected = new HashMap<String, String>();
+        Map<String, String> expected = new MyMapImpl<String, String>();
         expected.put("x", "z");
         expected.put("Y", "A b C");
         assertEquals(expected, c.getDirectives());

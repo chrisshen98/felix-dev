@@ -44,8 +44,19 @@ public class FelixRequirementAdapter implements Requirement
         return requirement.getAttributes();
     }
 
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
+
     public Map<String, String> getDirectives()
     {
+        for (String key:directives.keySet()) {
+            System.out.println("[CTEST][GET-PARAM] " + key + getStackTrace());
+        }
         return directives;
     }
 

@@ -100,13 +100,13 @@ public class ResourceImpl implements Resource
         return m_map;
     }
 
-    // public static String getStackTrace() {
-    //     String stackTrace = " ";
-    //     for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
-    //         stackTrace = stackTrace.concat(elem.getClassName() + "\t");
-    //     }
-    //     return stackTrace;
-    // }
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
 
     public String getPresentationName()
     {
@@ -209,7 +209,11 @@ public class ResourceImpl implements Resource
 
     public Capability[] getCapabilities()
     {
-        return (Capability[]) m_capList.toArray(new Capability[m_capList.size()]);
+        Capability[] temp = (Capability[]) m_capList.toArray(new Capability[m_capList.size()]);
+        for (Capability item: temp) {
+            System.out.println("[CTEST][GET-PARAM] " + item.getName() + getStackTrace());
+        }
+        return temp;
     }
 
     public void addCapability(Capability cap)
@@ -255,7 +259,7 @@ public class ResourceImpl implements Resource
     public void put(String key, String value, String type)
     {
         key = key.toLowerCase();
-        // System.out.println("[CTEST][SET-PARAM] " + key + getStackTrace());
+        System.out.println("[CTEST][SET-PARAM] " + key + getStackTrace());
         m_hash = 0;
         if (Property.URI.equals(type) || URI.equals(key))
         {

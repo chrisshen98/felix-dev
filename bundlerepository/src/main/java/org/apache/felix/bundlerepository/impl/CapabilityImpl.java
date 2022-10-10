@@ -110,7 +110,19 @@ public class CapabilityImpl implements Capability
         // System.out.println("[CTEST][SET-PARAM] " + key + getStackTrace());
     }
 
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
+
     public Map<String, String> getDirectives() {
-        return Collections.unmodifiableMap(m_directives);
+        Map<String, String> temp = Collections.unmodifiableMap(m_directives);
+        for (String key:temp.keySet()) {
+            System.out.println("[CTEST][GET-PARAM] " + key + getStackTrace());
+        }
+        return temp;
     }
 }

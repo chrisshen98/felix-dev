@@ -27,7 +27,6 @@ import org.apache.felix.bundlerepository.Capability;
 import org.apache.felix.bundlerepository.DataModelHelper;
 import org.apache.felix.bundlerepository.Repository;
 import org.apache.felix.bundlerepository.Resource;
-import org.apache.felix.bundlerepository.MyAttributes;
 import org.apache.felix.utils.manifest.Clause;
 import org.osgi.framework.Constants;
 

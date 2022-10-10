@@ -48,28 +48,31 @@ class NamespaceTranslator
         return Collections.unmodifiableMap(result);
     }
 
-    // public static String getStackTrace() {
-    //     String stackTrace = " ";
-    //     for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
-    //         stackTrace = stackTrace.concat(elem.getClassName() + "\t");
-    //     }
-    //     return stackTrace;
-    // }
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    }
 
     public static String getFelixNamespace(String osgiNamespace)
     {
         String result = osgiToFelixMap.get(osgiNamespace);
         if (result == null) {
-            // System.out.println("[CTEST][GET-PARAM] " + osgiNamespace + getStackTrace());
+            System.out.println("[CTEST][GET-PARAM] " + osgiNamespace + getStackTrace());
             return osgiNamespace;
         } else {
-            // System.out.println("[CTEST][GET-PARAM] " + result + getStackTrace());
+            System.out.println("[CTEST][GET-PARAM] " + result + getStackTrace());
             return result;
         }
     }
 
     public static Collection<String> getTranslatedFelixNamespaces()
     {
+        for (String key:felixToOSGiMap.keySet()) {
+            System.out.println("[CTEST][GET-PARAM] " + key + getStackTrace());
+        }
         return felixToOSGiMap.keySet();
     }
 
@@ -77,17 +80,20 @@ class NamespaceTranslator
     {
         String result = felixToOSGiMap.get(felixNamespace);
         if (result == null) {
-            // System.out.println("[CTEST][GET-PARAM] " + felixNamespace + getStackTrace());
+            System.out.println("[CTEST][GET-PARAM] " + felixNamespace + getStackTrace());
             return felixNamespace;
         }
         else {
-            // System.out.println("[CTEST][GET-PARAM] " + result + getStackTrace());
+            System.out.println("[CTEST][GET-PARAM] " + result + getStackTrace());
             return result;
         }
     }
 
     public static Collection<String> getTranslatedOSGiNamespaces()
     {
+        for (String key:osgiToFelixMap.keySet()) {
+            System.out.println("[CTEST][GET-PARAM] " + key + getStackTrace());
+        }
         return osgiToFelixMap.keySet();
     }
 }
