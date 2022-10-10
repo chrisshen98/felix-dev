@@ -746,7 +746,7 @@ public class DataModelHelperImpl implements DataModelHelper
         for (int i = 0; attributes != null && i < attributes.length; i++)
         {
             String key = attributes[i].getName();
-            System.out.println("[CTEST][GET-PARAM] " + key + getStackTrace());
+            // System.out.println("[CTEST][GET-PARAM] " + key + getStackTrace());
             if (key.equalsIgnoreCase(Constants.PACKAGE_SPECIFICATION_VERSION) || key.equalsIgnoreCase(Constants.VERSION_ATTRIBUTE) || key.equalsIgnoreCase("version:Version"))
             {
                 continue;
@@ -814,13 +814,13 @@ public class DataModelHelperImpl implements DataModelHelper
         requirement.setFilter(filter.toString());
     }
 
-    public static String getStackTrace() {
-        String stackTrace = " ";
-        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
-            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
-        }
-        return stackTrace;
-    }
+    // public static String getStackTrace() {
+    //     String stackTrace = " ";
+    //     for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+    //         stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+    //     }
+    //     return stackTrace;
+    // }
 
     private static Set doImportPackageAttributes(RequirementImpl requirement, StringBuffer filter, Attribute[] attributes)
     {
@@ -829,7 +829,7 @@ public class DataModelHelperImpl implements DataModelHelper
         {
             String name = attributes[i].getName();
             String value = attributes[i].getValue();
-            System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
+            // System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
             if (name.equalsIgnoreCase(Constants.PACKAGE_SPECIFICATION_VERSION) || name.equalsIgnoreCase(Constants.VERSION_ATTRIBUTE))
             {
                 continue;

@@ -52,13 +52,13 @@ class OSGiRepositoryImpl implements Repository
         this.repository = repository;
     }
 
-    public static String getStackTrace() {
-        String stackTrace = " ";
-        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
-            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
-        }
-        return stackTrace;
-    }
+    // public static String getStackTrace() {
+    //     String stackTrace = " ";
+    //     for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+    //         stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+    //     }
+    //     return stackTrace;
+    // }
 
     public Map<Requirement, Collection<Capability>> findProviders(Collection<? extends Requirement> requirements)
     {
@@ -82,7 +82,7 @@ class OSGiRepositoryImpl implements Repository
                 {
                     String f = req.getDirectives().get(Namespace.REQUIREMENT_FILTER_DIRECTIVE);
                     if (f != null) {
-                        System.out.println("[CTEST][GET-PARAM] " + f + getStackTrace());
+                        // System.out.println("[CTEST][GET-PARAM] " + f + getStackTrace());
                     }
                     try
                     {

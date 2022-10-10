@@ -205,13 +205,13 @@ public class StaxParser extends RepositoryParser
         return referral;
     }
 
-    public static String getStackTrace() {
-        String stackTrace = " ";
-        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
-            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
-        }
-        return stackTrace;
-    }
+    // public static String getStackTrace() {
+    //     String stackTrace = " ";
+    //     for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+    //         stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+    //     }
+    //     return stackTrace;
+    // }
     
     private ResourceImpl parseResource(XMLStreamReader reader) throws Exception
     {
@@ -220,7 +220,7 @@ public class StaxParser extends RepositoryParser
         {
             for (int i = 0, nb = reader.getAttributeCount(); i < nb; i++)
             {
-                System.out.println("[CTEST][SET-PARAM] " + reader.getAttributeLocalName(i) + getStackTrace());
+                // System.out.println("[CTEST][SET-PARAM] " + reader.getAttributeLocalName(i) + getStackTrace());
                 resource.put(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
             }
             int event;
@@ -263,7 +263,7 @@ public class StaxParser extends RepositoryParser
                     }
                     if (sb != null)
                     {
-                        System.out.println("[CTEST][SET-PARAM] " + element + getStackTrace());
+                        // System.out.println("[CTEST][SET-PARAM] " + element + getStackTrace());
                         resource.put(element, sb.toString().trim(), type);
                     }
                 }

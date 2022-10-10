@@ -68,7 +68,7 @@ public class ResolverImpl implements Resolver
     public synchronized void add(Requirement requirement)
     {
         m_resolved = false;
-        System.out.println("[CTEST][SET-PARAM] " + requirement.getName() + getStackTrace());
+        // System.out.println("[CTEST][SET-PARAM] " + requirement.getName() + getStackTrace());
         m_addedRequirementSet.add(requirement);
     }
 
@@ -728,18 +728,18 @@ public class ResolverImpl implements Resolver
         return null;
     }
 
-    public static String getStackTrace() {
-        String stackTrace = " ";
-        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
-            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
-        }
-        return stackTrace;
-    }
+    // public static String getStackTrace() {
+    //     String stackTrace = " ";
+    //     for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+    //         stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+    //     }
+    //     return stackTrace;
+    // }
 
     public static String getBundleName(Bundle bundle)
     {
         String name = bundle.getHeaders().get(Constants.BUNDLE_NAME);
-        System.out.println("[CTEST][GET-PARAM] " + name + getStackTrace());
+        // System.out.println("[CTEST][GET-PARAM] " + name + getStackTrace());
         return (name == null)
             ? "Bundle " + Long.toString(bundle.getBundleId())
             : name;
