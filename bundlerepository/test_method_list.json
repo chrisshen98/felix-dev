@@ -1,0 +1,15 @@
+[
+    "org.apache.felix.bundlerepository.impl#ResolverImplTest",
+    "org.apache.felix.bundlerepository.impl#RepositoryAdminTest",
+    "org.apache.felix.bundlerepository.impl#FelixRequirementAdapterTest",
+    "org.apache.felix.bundlerepository.impl#CapabilityImplTest",
+    "org.apache.felix.bundlerepository.impl#OSGiRepositoryImplTest",
+    "org.apache.felix.bundlerepository.impl#OSGiRepositoryXMLTest",
+    "org.apache.felix.bundlerepository.impl#RepositoryImplTest",
+    "org.apache.felix.bundlerepository.impl#LazyStringMapTest",
+    "org.apache.felix.bundlerepository.impl#DataModelHelperTest",
+    "org.apache.felix.bundlerepository.impl#StaxParserTest",
+    "org.apache.felix.bundlerepository.impl#ResourceImplTest",
+    "org.apache.felix.bundlerepository.impl#OSGiRequirementAdapterTest",
+    "org.apache.felix.bundlerepository.impl#NamespaceTranslatorTest"
+]
