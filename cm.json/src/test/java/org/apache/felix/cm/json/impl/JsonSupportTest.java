@@ -120,6 +120,8 @@ public class JsonSupportTest {
 
     @Test
     public void testConvertObjectArrayToObject() {
+
+        /* Fully Replaced */
         // final MyJsonArrayBuilderImpl sBuilder = new MyJsonArrayBuilderImpl(Json.createArrayBuilder());
         // final MyJsonObjectBuilderImpl o1 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
         // o1.add("a", "1");
@@ -128,6 +130,7 @@ public class JsonSupportTest {
         // sBuilder.add(o1);
         // sBuilder.add(o2);
 
+        /* Only JsonObjectBuilder Replaced */
         final JsonArrayBuilder sBuilder = Json.createArrayBuilder();
         final MyJsonObjectBuilderImpl o1 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
         o1.add("a", "1");
@@ -136,6 +139,7 @@ public class JsonSupportTest {
         sBuilder.add(o1.getParent());
         sBuilder.add(o2.getParent());
 
+        /* Not Replaced At All */
         // final JsonArrayBuilder sBuilder = Json.createArrayBuilder();
         // final JsonObjectBuilder o1 = Json.createObjectBuilder();
         // o1.add("a", "1");

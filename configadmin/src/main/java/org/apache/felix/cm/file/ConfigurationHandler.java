@@ -112,7 +112,8 @@ public class ConfigurationHandler
 
     static
     {
-        type2Code = new HashMap<Class<?>, Integer>();
+        // type2Code = new HashMap<Class<?>, Integer>();
+        type2Code = new MyHashMap<Class<?>, Integer>();
 
         // simple (exclusive String whose type code is not written)
         type2Code.put( Integer.class, Integer.valueOf( TOKEN_SIMPLE_INTEGER ) );
@@ -137,7 +138,9 @@ public class ConfigurationHandler
         // reverse map to map type codes to classes, string class mapping
         // to be added manually, as the string type code is not written and
         // hence not included in the type2Code map
-        code2Type = new HashMap<Integer, Class<?>>();
+
+        // code2Type = new HashMap<Integer, Class<?>>();
+        code2Type = new MyHashMap<Integer, Class<?>>();
         for(final Map.Entry<Class<?>, Integer> entry : type2Code.entrySet())
         {
             code2Type.put( entry.getValue(), entry.getKey() );
@@ -293,7 +296,8 @@ public class ConfigurationHandler
         line = 0;
         pos = 0;
 
-        Dictionary<String, Object> configuration = new Hashtable<String, Object>();
+        // Dictionary<String, Object> configuration = new Hashtable<String, Object>();
+        Dictionary<String, Object> configuration = new MyHashtable<String, Object>();
         token = 0;
         while ( nextToken( pr, true ) == TOKEN_NAME )
         {

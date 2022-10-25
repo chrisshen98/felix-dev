@@ -84,6 +84,7 @@ public class ConfigurationHandlerTest {
     {
         @SuppressWarnings("unchecked")
         final Dictionary<String, Object> dict = ConfigurationHandler.read(new ByteArrayInputStream(CONFIG.getBytes("UTF-8")));
+        // final Dictionary<String, Object> dict = new MyDictionary(ConfigurationHandler.read(new ByteArrayInputStream(CONFIG.getBytes("UTF-8"))));
         Assert.assertEquals(2, dict.size());
         Assert.assertEquals(VAL_1, dict.get(PAR_1));
         Assert.assertEquals(VAL_2, dict.get(PAR_2).toString());
