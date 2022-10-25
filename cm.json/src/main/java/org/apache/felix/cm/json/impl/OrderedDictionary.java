@@ -101,7 +101,7 @@ public class OrderedDictionary extends Hashtable<String, Object> implements Seri
         final CaseInsensitiveKey k = new CaseInsensitiveKey(key);
         final Object oldValue = this.map.remove(k);
         this.map.put(k, value);
-        System.out.println("[CTEST][GET-PARAM] " + k.toString() + getStackTrace());
+        System.out.println("[CTEST][SET-PARAM] " + k.toString() + getStackTrace());
         return oldValue;
     }
 
@@ -330,7 +330,7 @@ public class OrderedDictionary extends Hashtable<String, Object> implements Seri
 
 		@Override
 		public Object getValue() {
-            System.out.println("[CTEST][GET-PARAM] " + entry.getValue().toString() + getStackTrace());
+            // System.out.println("[CTEST][GET-PARAM] " + entry.getValue().toString() + getStackTrace());
 			return entry.getValue();
 		}
 
