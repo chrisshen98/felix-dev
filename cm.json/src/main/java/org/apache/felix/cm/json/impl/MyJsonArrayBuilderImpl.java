@@ -1,13 +1,12 @@
 package org.apache.felix.cm.json.impl;
 
 import javax.json.JsonArrayBuilder;
+// import javax.json.JsonValue;
+// import javax.json.Json;
+import javax.json.JsonArray;
 
-public class MyJsonArrayBuilderImpl extends JsonArrayBuilder{
-    
-    // public static MyJsonArrayBuilderImpl createByCopy(JsonArrayBuilder toCopy) {
-    //     MyJsonArrayBuilderImpl toReturn = new MyJsonArrayBuilderImpl(toCopy);
-    //     return toReturn;
-    // }
+public class MyJsonArrayBuilderImpl{
+
     private JsonArrayBuilder parent;
 
     public MyJsonArrayBuilderImpl(JsonArrayBuilder toSave) {
@@ -22,10 +21,13 @@ public class MyJsonArrayBuilderImpl extends JsonArrayBuilder{
         return stackTrace;
     } 
 
-    @Override
-    public MyJsonArrayBuilderImpl add(String name, String value) {
-        System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
-        parent.add(name, value);
+    public MyJsonArrayBuilderImpl add(MyJsonObjectBuilderImpl value) {
+        System.out.println("[CTEST][SET-PARAM] " + value + getStackTrace());
+        parent.add(value.getParent());
         return this;
     } 
+
+    public JsonArray build() {
+        return parent.build();
+    }
 }

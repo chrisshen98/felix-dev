@@ -65,7 +65,8 @@ public class JsonSupportTest {
     }
 
     public void testConvertObjectToObject() {
-        final JsonObjectBuilder builder = Json.createObjectBuilder();
+        // final JsonObjectBuilder builder = Json.createObjectBuilder();
+        final MyJsonObjectBuilderImpl builder = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
         builder.add("hello", "world");
 
         assertEquals("{\"hello\":\"world\"}", Configurations.convertToObject(builder.build()));
@@ -73,6 +74,7 @@ public class JsonSupportTest {
 
     @Test
     public void testConvertBooleanArrayToObject() {
+        // final JsonArrayBuilder builder = MyJsonArrayBuilderImpl.createByCopy(Json.createArrayBuilder());
         // final JsonArrayBuilder builder = new MyJsonArrayBuilderImpl(Json.createArrayBuilder());
         final JsonArrayBuilder builder = Json.createArrayBuilder();
         builder.add(true);
@@ -118,13 +120,29 @@ public class JsonSupportTest {
 
     @Test
     public void testConvertObjectArrayToObject() {
+        // final MyJsonArrayBuilderImpl sBuilder = new MyJsonArrayBuilderImpl(Json.createArrayBuilder());
+        // final MyJsonObjectBuilderImpl o1 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
+        // o1.add("a", "1");
+        // final MyJsonObjectBuilderImpl o2 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
+        // o2.add("b", 2);
+        // sBuilder.add(o1);
+        // sBuilder.add(o2);
+
         final JsonArrayBuilder sBuilder = Json.createArrayBuilder();
-        final JsonObjectBuilder o1 = Json.createObjectBuilder();
+        final MyJsonObjectBuilderImpl o1 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
         o1.add("a", "1");
-        final JsonObjectBuilder o2 = Json.createObjectBuilder();
+        final MyJsonObjectBuilderImpl o2 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
         o2.add("b", 2);
-        sBuilder.add(o1);
-        sBuilder.add(o2);
+        sBuilder.add(o1.getParent());
+        sBuilder.add(o2.getParent());
+
+        // final JsonArrayBuilder sBuilder = Json.createArrayBuilder();
+        // final JsonObjectBuilder o1 = Json.createObjectBuilder();
+        // o1.add("a", "1");
+        // final JsonObjectBuilder o2 = Json.createObjectBuilder();
+        // o2.add("b", 2);
+        // sBuilder.add(o1);
+        // sBuilder.add(o2);
 
         assertArrayEquals(new String[] { "{\"a\":\"1\"}", "{\"b\":2}" },
                 (String[]) Configurations.convertToObject(sBuilder.build()));
