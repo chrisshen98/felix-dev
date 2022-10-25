@@ -1,0 +1,26 @@
+package org.apache.felix.cm.json.impl;
+
+import javax.json.JsonArrayBuilder;
+
+public class MyJsonArrayBuilderImpl extends JsonArrayBuilder{
+    
+    public static MyJsonArrayBuilderImpl createByCopy(JsonArrayBuilder toCopy) {
+        MyJsonArrayBuilderImpl toReturn = new MyJsonArrayBuilderImpl(toCopy);
+        return toReturn;
+    }
+
+    public String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    } 
+
+    @Override
+    public MyJsonArrayBuilderImpl add(String name, String value) {
+        System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
+        super.add(name, value);
+        return this;
+    } 
+}

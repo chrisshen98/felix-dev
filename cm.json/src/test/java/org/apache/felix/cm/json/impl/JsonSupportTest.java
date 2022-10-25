@@ -73,7 +73,8 @@ public class JsonSupportTest {
 
     @Test
     public void testConvertBooleanArrayToObject() {
-        final JsonArrayBuilder builder = Json.createArrayBuilder();
+        final JsonArrayBuilder builder = MyJsonArrayBuilderImpl.createByCopy(Json.createArrayBuilder());
+        // final JsonArrayBuilder builder = Json.createArrayBuilder();
         builder.add(true);
         builder.add(false);
 

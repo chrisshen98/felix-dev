@@ -1,0 +1,27 @@
+package org.apache.felix.cm.json.impl;
+
+import javax.json.JsonObjectBuilder;
+
+public class MyJsonObjectBuilderImpl extends JsonObjectBuilder {
+    
+    public static MyJsonObjectBuilderImpl createByCopy(JsonObjectBuilder toCopy) {
+        MyJsonObjectBuilderImpl toReturn = new MyJsonObjectBuilderImpl(toCopy);
+        return toReturn;
+    }
+
+    public String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    } 
+
+    @Override
+    public MyJsonObjectBuilderImpl add(String name, String value) {
+        System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
+        super.add(name, value);
+        return this;
+    } 
+
+}

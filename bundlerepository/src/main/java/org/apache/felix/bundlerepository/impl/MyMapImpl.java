@@ -1,6 +1,5 @@
 package org.apache.felix.bundlerepository.impl;
 
-// import java.util.Map;
 import java.util.HashMap;
 
 public class MyMapImpl<K,V> extends HashMap<K,V> {
