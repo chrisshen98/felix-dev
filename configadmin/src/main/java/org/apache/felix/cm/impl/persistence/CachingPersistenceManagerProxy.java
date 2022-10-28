@@ -26,6 +26,7 @@ import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.HashMap;
+import org.apache.felix.cm.file.MyHashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +55,7 @@ public class CachingPersistenceManagerProxy implements ExtPersistenceManager
     private final PersistenceManager pm;
 
     /** Cached dictionaries */
-    private final Map<String, CaseInsensitiveDictionary> cache = new HashMap<>();
+    private final Map<String, CaseInsensitiveDictionary> cache = new MyHashMap<>();
 
     /** Protecting lock */
     private final ReadWriteLock globalLock = new ReentrantReadWriteLock();
@@ -67,7 +68,7 @@ public class CachingPersistenceManagerProxy implements ExtPersistenceManager
     private volatile boolean fullyLoaded;
 
     /** Factory configuration cache. */
-    private final Map<String, Set<String>> factoryConfigCache = new HashMap<>();
+    private final Map<String, Set<String>> factoryConfigCache = new MyHashMap<>();
 
     /**
      * Creates a new caching layer for the given actual {@link PersistenceManager}.

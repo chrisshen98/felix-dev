@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 
 import org.apache.felix.cm.PersistenceManager;
 import org.apache.felix.cm.impl.helper.TargetedPID;
@@ -532,7 +533,7 @@ public class ConfigurationImpl
      */
     private void storeNewConfiguration() throws IOException
     {
-        Dictionary<String, Object> props = new Hashtable<>();
+        Dictionary<String, Object> props = new MyHashtable<>();
         setAutoProperties( props, true );
         props.put( CONFIGURATION_NEW, Boolean.TRUE );
         props.put( PROPERTY_REVISION, Long.valueOf(getRevision()) );
@@ -550,7 +551,7 @@ public class ConfigurationImpl
         // if this is a new configuration, we just use an empty Dictionary
         if ( props == null )
         {
-            props = new Hashtable<>();
+            props = new MyHashtable<>();
 
             // add automatic properties including the bundle location (if
             // statically bound)

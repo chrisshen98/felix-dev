@@ -4,6 +4,12 @@ import java.util.Hashtable;
 
 public class MyHashtable<K,V> extends Hashtable<K,V> {
     
+    public MyHashtable() {
+        super();
+    }
+    public MyHashtable(int size) {
+        super(size);
+    }
     public String getStackTrace() {
         String stackTrace = " ";
         for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {

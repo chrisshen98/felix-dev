@@ -23,6 +23,7 @@ import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.List;
 
 import org.apache.felix.cm.PersistenceManager;
@@ -168,7 +169,7 @@ public class Activator implements BundleActivator
 
     private ServiceFactory<PersistenceManager> registerFilePersistenceManager(final BundleContext bundleContext)
     {
-        final Dictionary<String, Object> props = new Hashtable<>();
+        final Dictionary<String, Object> props = new MyHashtable<>();
         props.put(Constants.SERVICE_DESCRIPTION, "Platform Filesystem Persistence Manager");
         props.put(Constants.SERVICE_VENDOR, "The Apache Software Foundation");
         props.put(Constants.SERVICE_RANKING, Integer.valueOf(Integer.MIN_VALUE));
@@ -202,7 +203,7 @@ public class Activator implements BundleActivator
 
     private void registerMemoryPersistenceManager(final BundleContext bundleContext) {
         final MemoryPersistenceManager mpm = new MemoryPersistenceManager();
-        final Dictionary<String, Object> props = new Hashtable<>();
+        final Dictionary<String, Object> props = new MyHashtable<>();
         props.put(Constants.SERVICE_DESCRIPTION, "Platform Memory Persistence Manager");
         props.put(Constants.SERVICE_VENDOR, "The Apache Software Foundation");
         props.put(PersistenceManager.PROPERTY_NAME, "memory");

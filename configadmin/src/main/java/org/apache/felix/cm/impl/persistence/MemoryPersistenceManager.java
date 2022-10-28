@@ -25,6 +25,7 @@ import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.HashMap;
+import org.apache.felix.cm.file.MyHashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -43,10 +44,10 @@ public class MemoryPersistenceManager implements NotCachablePersistenceManager
 {
 
     /** Cached dictionaries */
-    private final Map<String, CaseInsensitiveDictionary> cache = new HashMap<>();
+    private final Map<String, CaseInsensitiveDictionary> cache = new MyHashMap<>();
 
     /** Factory configuration cache. */
-    private final Map<String, Set<String>> factoryConfigCache = new HashMap<>();
+    private final Map<String, Set<String>> factoryConfigCache = new MyHashMap<>();
 
     @Override
     public void delete( final String pid ) throws IOException

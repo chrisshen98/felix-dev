@@ -29,8 +29,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Dictionary;
 import java.util.HashMap;
+import org.apache.felix.cm.file.MyHashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -125,7 +127,7 @@ public class ConfigurationManager implements BundleListener
 
     // the cache of Configuration instances mapped by their PID
     // have this always set to prevent NPE on bundle shutdown
-    private final HashMap<String, ConfigurationImpl> configurations = new HashMap<>();
+    private final HashMap<String, ConfigurationImpl> configurations = new MyHashMap<>();
 
     /**
      * The map of dynamic configuration bindings. This maps the
@@ -184,7 +186,7 @@ public class ConfigurationManager implements BundleListener
 
         // create and register configuration admin - start after PM tracker ...
         ConfigurationAdminFactory caf = new ConfigurationAdminFactory( this );
-        serviceProperties = new Hashtable<>();
+        serviceProperties = new MyHashtable<>();
         serviceProperties.put(Constants.SERVICE_PID, "org.apache.felix.cm.ConfigurationAdmin");
         serviceProperties.put(Constants.SERVICE_DESCRIPTION,
                 "Configuration Admin Service Specification 1.6 Implementation");

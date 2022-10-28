@@ -24,6 +24,7 @@ import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 
 import org.apache.felix.cm.impl.ConfigurationManager;
 import org.osgi.framework.ServiceReference;
@@ -34,7 +35,7 @@ import org.osgi.service.cm.ManagedService;
 public class ManagedServiceTracker extends BaseTracker<ManagedService>
 {
 
-    private static final Dictionary<String, ?> INITIAL_MARKER = new Hashtable<String, Object>( 0 );
+    private static final Dictionary<String, ?> INITIAL_MARKER = new MyHashtable<String, Object>( 0 );
 
 
     public ManagedServiceTracker( ConfigurationManager cm )

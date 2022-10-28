@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
+import org.apache.felix.cm.file.MyConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.osgi.framework.BundleContext;
@@ -51,9 +52,9 @@ public class RequiredConfigurationPluginTracker
 
     private final BundleContext bundleContext;
 
-    private final ConcurrentHashMap<String, AtomicInteger> serviceMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, AtomicInteger> serviceMap = new MyConcurrentHashMap<>();
 
-    private final Map<Long, String> idToNameMap = new ConcurrentHashMap<>();
+    private final Map<Long, String> idToNameMap = new MyConcurrentHashMap<>();
 
     private final ConfigurationAdminStarter starter;
 

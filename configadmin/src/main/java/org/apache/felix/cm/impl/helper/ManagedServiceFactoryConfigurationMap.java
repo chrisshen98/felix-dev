@@ -20,6 +20,7 @@ package org.apache.felix.cm.impl.helper;
 
 
 import java.util.HashMap;
+import org.apache.felix.cm.file.MyHashMap;
 import java.util.Map;
 
 
@@ -35,7 +36,7 @@ public class ManagedServiceFactoryConfigurationMap extends ConfigurationMap<Map<
     @Override
     protected Map<String, Map<TargetedPID, Long>> createMap( int size )
     {
-        return new HashMap<String, Map<TargetedPID, Long>>( size );
+        return new MyHashMap<String, Map<TargetedPID, Long>>( size );
     }
 
 
@@ -75,7 +76,7 @@ public class ManagedServiceFactoryConfigurationMap extends ConfigurationMap<Map<
         Map<TargetedPID, Long> configs = this.get( factoryPid );
 
         if (configs == null) {
-            configs = new HashMap<TargetedPID, Long>( 4 );
+            configs = new MyHashMap<TargetedPID, Long>( 4 );
         }
 
         if (revision < 0) {

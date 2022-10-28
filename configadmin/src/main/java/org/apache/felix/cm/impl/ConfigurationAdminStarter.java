@@ -22,6 +22,7 @@ package org.apache.felix.cm.impl;
 import java.io.IOException;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import org.apache.felix.cm.file.MyTreeMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.felix.cm.impl.persistence.ExtPersistenceManager;
@@ -104,7 +105,7 @@ public class ConfigurationAdminStarter {
         this.coordinatorTracker = new ServiceTracker<>(bundleContext, "org.osgi.service.coordinator.Coordinator",
                 new ServiceTrackerCustomizer<Object, Object>()
         {
-            private final SortedMap<ServiceReference<Object>, Object> sortedServices = new TreeMap<>();
+            private final SortedMap<ServiceReference<Object>, Object> sortedServices = new MyTreeMap<>();
 
             @Override
             public Object addingService(final ServiceReference<Object> reference)

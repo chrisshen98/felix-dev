@@ -1,15 +1,9 @@
 package org.apache.felix.cm.file;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class MyHashMap<K,V> extends HashMap<K,V> {
+public class MyConcurrentHashMap<K,V> extends ConcurrentHashMap<K,V> {
 
-    public MyHashMap() {
-        super();
-    }
-    public MyHashMap(int size) {
-        super(size);
-    }
     public String getStackTrace() {
         String stackTrace = " ";
         for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {

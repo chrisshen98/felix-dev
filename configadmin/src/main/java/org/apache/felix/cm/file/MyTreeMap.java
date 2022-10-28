@@ -1,15 +1,12 @@
 package org.apache.felix.cm.file;
 
-import java.util.HashMap;
+import java.util.TreeMap;
 
-public class MyHashMap<K,V> extends HashMap<K,V> {
+public class MyTreeMap<K,V> extends TreeMap<K,V> {
 
-    public MyHashMap() {
-        super();
-    }
-    public MyHashMap(int size) {
-        super(size);
-    }
+    // public MyTreeMap() {
+    //     super();
+    // }
     public String getStackTrace() {
         String stackTrace = " ";
         for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
