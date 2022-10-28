@@ -65,6 +65,13 @@ public class LazyStringMap<V> extends StringArrayMap<V>
         return val;
     }
 
+    @Override
+    @SuppressWarnings("unchecked")
+    public V put(String key, V value) {
+        System.out.println("[CTEST][SET-PARAM] " + (String) key + getStackTrace());
+        return (V) doPut(key, value);
+    }
+
     public void putLazy(String key, LazyValue<V> lazy) {
         System.out.println("[CTEST][SET-PARAM] " + (String) key + getStackTrace());
         super.doPut(key, lazy);

@@ -60,7 +60,7 @@ public class FelixRequirementAdapterTest extends TestCase
 
         RequirementImpl requirement = new RequirementImpl();
         requirement.setFilter("(a=b)");
-        Map<String, String> other = new HashMap<String, String>();
+        Map<String, String> other = new MyMapImpl<String, String>();
         other.put("xyz", "abc");
         requirement.setDirectives(other);
 

@@ -41,7 +41,7 @@ public class FelixCapabilityAdapter implements Capability
         if (convertedAttributes == null)
         {
             Map<String, Object> orgMap = capability.getPropertiesAsMap();
-            HashMap<String, Object> converted = new HashMap<String, Object>(orgMap.size() + 2);
+            HashMap<String, Object> converted = new MyMapImpl<String, Object>(orgMap.size() + 2);
 
             for (Map.Entry<String, Object> entry : orgMap.entrySet())
             {

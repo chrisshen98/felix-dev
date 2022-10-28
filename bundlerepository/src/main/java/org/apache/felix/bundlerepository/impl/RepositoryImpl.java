@@ -55,7 +55,6 @@ public class RepositoryImpl implements Repository
     
     public String getURI()
     {
-        System.out.println("[CTEST][GET-PARAM] " + m_uri + getStackTrace());
         return m_uri;
     }
 

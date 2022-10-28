@@ -4,6 +4,14 @@ import java.util.HashMap;
 
 public class MyMapImpl<K,V> extends HashMap<K,V> {
 
+    public MyMapImpl () {
+        super();
+    }
+
+    public MyMapImpl (int size) {
+        super(size);
+    }
+
     public String getStackTrace() {
         String stackTrace = " ";
         for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
