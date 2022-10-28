@@ -27,6 +27,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.Set;
 
 import org.apache.felix.cm.MockPersistenceManager;
@@ -60,7 +61,7 @@ public class CachingPersistenceManagerProxyTest
 
     private Dictionary<String, Object> createConfiguration(final String pid, final String factoryPid)
     {
-        final Dictionary<String, Object> dict = new Hashtable<>();
+        final Dictionary<String, Object> dict = new MyHashtable<>();
 
         dict.put(Constants.SERVICE_PID, pid);
         if ( factoryPid != null )
@@ -99,7 +100,7 @@ public class CachingPersistenceManagerProxyTest
         PersistenceManager pm = new MockPersistenceManager();
         CachingPersistenceManagerProxy cpm = new CachingPersistenceManagerProxy( pm );
 
-        Dictionary dictionary = new Hashtable();
+        Dictionary dictionary = new MyHashtable();
         dictionary.put( "property1", "value1" );
         dictionary.put( Constants.SERVICE_PID, pid );
         pm.store( pid, dictionary );
@@ -107,7 +108,7 @@ public class CachingPersistenceManagerProxyTest
         Collection<Dictionary> list = cpm.getDictionaries( filter );
         assertEquals(1, list.size());
 
-        dictionary = new Hashtable();
+        dictionary = new MyHashtable();
         dictionary.put( "property1", "value2" );
         pid = "testDefaultPersistenceManager";
         dictionary.put( Constants.SERVICE_PID, pid );

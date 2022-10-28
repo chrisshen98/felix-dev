@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.List;
 
 import org.junit.Assert;
@@ -103,7 +104,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeArray() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Object> properties = new Hashtable<>();
+        Dictionary< String, Object> properties = new MyHashtable<>();
         properties.put(SERVICE_PID , new String [] {"foo", "bar"});
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -113,7 +114,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeEmptyCollection() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Object> properties = new Hashtable<>();
+        Dictionary< String, Object> properties = new MyHashtable<>();
         properties.put(SERVICE_PID , new ArrayList<String>());
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -123,7 +124,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeCollection() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Object> properties = new Hashtable<>();
+        Dictionary< String, Object> properties = new MyHashtable<>();
         List<String> list = new ArrayList<>();
         list.add("foo");
         list.add("bar");
@@ -137,7 +138,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeSimpleString() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, String> properties = new Hashtable<>();
+        Dictionary< String, String> properties = new MyHashtable<>();
         properties.put(SERVICE_PID, "com.adobe.granite.foo.Bar");
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -147,7 +148,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeStringWithSpaces() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, String> properties = new Hashtable<>();
+        Dictionary< String, String> properties = new MyHashtable<>();
         properties.put("prop", "Hello World");
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -157,7 +158,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeInteger() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Integer> properties = new Hashtable<>();
+        Dictionary< String, Integer> properties = new MyHashtable<>();
         properties.put(SERVICE_PID, 1000);
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -167,7 +168,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeLong() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Long> properties = new Hashtable<>();
+        Dictionary< String, Long> properties = new MyHashtable<>();
         properties.put(SERVICE_PID, 1000L);
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -177,7 +178,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeFloat() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Float> properties = new Hashtable<>();
+        Dictionary< String, Float> properties = new MyHashtable<>();
         properties.put(SERVICE_PID, 3.6f);
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -187,7 +188,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeDouble() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Double> properties = new Hashtable<>();
+        Dictionary< String, Double> properties = new MyHashtable<>();
         properties.put(SERVICE_PID, 3.6d);
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -197,7 +198,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeByte() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Byte> properties = new Hashtable<>();
+        Dictionary< String, Byte> properties = new MyHashtable<>();
         properties.put(SERVICE_PID, Byte.parseByte("10"));
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -207,7 +208,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeShort() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Short> properties = new Hashtable<>();
+        Dictionary< String, Short> properties = new MyHashtable<>();
         properties.put(SERVICE_PID, (short)10);
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -217,7 +218,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeChar() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Character> properties = new Hashtable<>();
+        Dictionary< String, Character> properties = new MyHashtable<>();
         properties.put(SERVICE_PID, 'c');
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -227,7 +228,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeBoolean() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, Boolean> properties = new Hashtable<>();
+        Dictionary< String, Boolean> properties = new MyHashtable<>();
         properties.put(SERVICE_PID, true);
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -237,7 +238,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_writeSimpleStringWithError() throws IOException {
         OutputStream out = new ByteArrayOutputStream();
-        Dictionary< String, String> properties = new Hashtable<>();
+        Dictionary< String, String> properties = new MyHashtable<>();
         properties.put("foo.bar", "com.adobe.granite.foo.Bar");
         ConfigurationHandler.write(out, properties);
         String entry = new String(((ByteArrayOutputStream)out).toByteArray(),"UTF-8");
@@ -391,7 +392,7 @@ public class ConfigurationHandlerTest {
     @Test
     public void test_backslash() throws IOException {
         final String VALUE = "val\\ue\\\\";
-        final Dictionary<String, Object> dict = new Hashtable<>();
+        final Dictionary<String, Object> dict = new MyHashtable<>();
         dict.put("key", VALUE);
         try (final ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             ConfigurationHandler.write(out, dict);

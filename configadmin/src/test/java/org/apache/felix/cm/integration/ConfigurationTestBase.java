@@ -35,6 +35,7 @@ import java.lang.reflect.Method;
 import java.util.Dictionary;
 import java.util.HashSet;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -105,7 +106,7 @@ public abstract class ConfigurationTestBase
 
     static
     {
-        theConfig = new Hashtable<>();
+        theConfig = new MyHashtable<>();
         theConfig.put( PROP_NAME, PROP_NAME );
     }
 

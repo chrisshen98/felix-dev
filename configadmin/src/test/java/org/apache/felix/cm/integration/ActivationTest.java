@@ -26,6 +26,7 @@ import static org.ops4j.pax.exam.CoreOptions.options;
 import java.io.IOException;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 
 import org.apache.felix.cm.impl.Activator;
 import org.apache.felix.cm.impl.RequiredConfigurationPluginTracker;
@@ -60,7 +61,7 @@ public class ActivationTest extends ConfigurationTestBase
         // plugin p1 not registered, CA must not be available
         checkNoConfigurationAdmin();
 
-        final Dictionary<String, Object> props = new Hashtable<>();
+        final Dictionary<String, Object> props = new MyHashtable<>();
         props.put(RequiredConfigurationPluginTracker.PROPERTY_NAME, "p1");
 
         final ServiceRegistration<ConfigurationPlugin> reg = this.bundleContext
@@ -91,7 +92,7 @@ public class ActivationTest extends ConfigurationTestBase
         // plugin p1 not registered, CA must not be available
         checkNoConfigurationAdmin();
 
-        final Dictionary<String, Object> props = new Hashtable<>();
+        final Dictionary<String, Object> props = new MyHashtable<>();
         props.put(RequiredConfigurationPluginTracker.PROPERTY_NAME, "p2");
 
         final ServiceRegistration<ConfigurationPlugin> reg = this.bundleContext

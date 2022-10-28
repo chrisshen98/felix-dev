@@ -21,6 +21,7 @@ package org.apache.felix.cm.integration;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 
 import org.apache.felix.cm.integration.helper.SynchronousTestListener;
 import org.apache.felix.cm.integration.helper.TestListener;
@@ -60,7 +61,7 @@ public class ConfigurationListenerTest extends ConfigurationTestBase
             delay();
             testListener.assertNoEvent();
 
-            config.update( new Hashtable<String, Object>()
+            config.update( new MyHashtable<String, Object>()
             {
                 {
                     put( "x", "x" );
@@ -69,7 +70,7 @@ public class ConfigurationListenerTest extends ConfigurationTestBase
             delay();
             testListener.assertEvent( ConfigurationEvent.CM_UPDATED, pid, null, true, ++eventCount );
 
-            config.update( new Hashtable<String, Object>()
+            config.update( new MyHashtable<String, Object>()
             {
                 {
                     put( "x", "x" );
@@ -136,7 +137,7 @@ public class ConfigurationListenerTest extends ConfigurationTestBase
             testListener.assertNoEvent();
             testListenerAsync.assertNoEvent();
 
-            config.update( new Hashtable<String, Object>()
+            config.update( new MyHashtable<String, Object>()
             {
                 {
                     put( "x", "x" );
@@ -146,7 +147,7 @@ public class ConfigurationListenerTest extends ConfigurationTestBase
             testListener.assertEvent( ConfigurationEvent.CM_UPDATED, pid, null, false, ++eventCount );
             testListenerAsync.assertEvent( ConfigurationEvent.CM_UPDATED, pid, null, true, ++eventCountAsync );
 
-            config.update( new Hashtable<String, Object>()
+            config.update( new MyHashtable<String, Object>()
             {
                 {
                     put( "x", "x" );

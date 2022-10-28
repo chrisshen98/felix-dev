@@ -24,6 +24,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 
 import org.apache.felix.cm.PersistenceManager;
 import org.junit.Test;
@@ -48,7 +49,7 @@ public class MemoryPersistenceManagerTest
 
     private Dictionary<String, Object> createConfiguration(final String pid, final String factoryPid)
     {
-        final Dictionary<String, Object> dict = new Hashtable<>();
+        final Dictionary<String, Object> dict = new MyHashtable<>();
 
         dict.put(Constants.SERVICE_PID, pid);
         if ( factoryPid != null )

@@ -20,6 +20,7 @@ package org.apache.felix.cm.impl.helper;
 
 
 import java.util.HashMap;
+import org.apache.felix.cm.file.MyHashMap;
 import java.util.Map;
 
 import org.junit.Test;

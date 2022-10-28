@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -360,7 +361,7 @@ public class ConfigurationBaseTest extends ConfigurationTestBase
         cfgAdminBundle.stop();
         try
         {
-            config.update( new Hashtable<String, Object>()
+            config.update( new MyHashtable<String, Object>()
             {
                 {
                     put( "sample", "sample" );
@@ -575,7 +576,7 @@ public class ConfigurationBaseTest extends ConfigurationTestBase
 
         TestCase.assertEquals("Expect first version to be 1", 1, config.getChangeCount());
 
-        config.update(new Hashtable(){{put("x", "x");}});
+        config.update(new MyHashtable(){{put("x", "x");}});
         TestCase.assertEquals("Expect second version to be 2", 2, config.getChangeCount());
 
         // delete
@@ -1273,7 +1274,7 @@ public class ConfigurationBaseTest extends ConfigurationTestBase
         try
         {
             final Vector v = new Vector( Arrays.asList( value ) );
-            getConfigurationAdmin().getConfiguration( pid ).update( new Hashtable()
+            getConfigurationAdmin().getConfiguration( pid ).update( new MyHashtable()
             {
                 {
                     put( "v", v );
@@ -1288,7 +1289,7 @@ public class ConfigurationBaseTest extends ConfigurationTestBase
             getConfigurationAdmin().getConfiguration( pid, null ).delete();
 
             final List l = Arrays.asList( value );
-            getConfigurationAdmin().getConfiguration( pid ).update( new Hashtable()
+            getConfigurationAdmin().getConfiguration( pid ).update( new MyHashtable()
             {
                 {
                     put( "v", l );

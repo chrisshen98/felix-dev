@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Dictionary;
+import org.apache.felix.cm.file.MyHashtable;
 
 import org.apache.felix.cm.MockBundle;
 import org.apache.felix.cm.MockBundleContext;

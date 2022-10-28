@@ -20,6 +20,7 @@ package org.apache.felix.cm.impl;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 
 import org.junit.Test;
 
@@ -29,10 +30,10 @@ import static org.junit.Assert.assertTrue;
 public class ConfigurationImplTest {
 
     @Test public void testEqualsWithArrays() {
-        final Dictionary<String, Object> props1 = new Hashtable<String, Object>();
+        final Dictionary<String, Object> props1 = new MyHashtable<String, Object>();
         props1.put("array", new long[] {1,2});
 
-        final Dictionary<String, Object> props2 = new Hashtable<String, Object>();
+        final Dictionary<String, Object> props2 = new MyHashtable<String, Object>();
         props2.put("array", new long[] {1,2});
 
         assertTrue(ConfigurationImpl.equals(props1, props2));
@@ -40,17 +41,17 @@ public class ConfigurationImplTest {
         props2.put("array", new Long[] {1L,2L});
         assertTrue(ConfigurationImpl.equals(props1, props2));
 
-        final Dictionary<String, Object> props3 = new Hashtable<String, Object>();
+        final Dictionary<String, Object> props3 = new MyHashtable<String, Object>();
         props3.put("array", new long[] {1,2,3});
         assertFalse(ConfigurationImpl.equals(props1, props3));
 
-        final Dictionary<String, Object> props4 = new Hashtable<String, Object>();
+        final Dictionary<String, Object> props4 = new MyHashtable<String, Object>();
         props3.put("array", new long[] {1});
         assertFalse(ConfigurationImpl.equals(props1, props4));
     }
 
     @Test public void testEqualsForNull() {
-        final Dictionary<String, Object> props = new Hashtable<String, Object>();
+        final Dictionary<String, Object> props = new MyHashtable<String, Object>();
         assertFalse(ConfigurationImpl.equals(props, null));
         assertFalse(ConfigurationImpl.equals(null, props));
         assertTrue(ConfigurationImpl.equals(null, null));

@@ -22,6 +22,7 @@ package org.apache.felix.cm.integration;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.List;
 import org.apache.felix.cm.integration.helper.SynchronousTestListener;
 import org.apache.felix.cm.integration.helper.TestListener;
@@ -111,7 +112,7 @@ public class FELIX2813_ConfigurationAdminStartupTest extends ConfigurationTestBa
             try
             {
                 org.osgi.service.cm.Configuration config = ca.getConfiguration( "test" );
-                Hashtable<String, Object> props = new Hashtable<String, Object>();
+                Hashtable<String, Object> props = new MyHashtable<String, Object>();
                 props.put( "abc", "123" );
                 config.update( props );
             }

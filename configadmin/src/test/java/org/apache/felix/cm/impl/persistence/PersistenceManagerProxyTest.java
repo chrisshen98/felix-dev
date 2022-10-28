@@ -23,6 +23,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Collection;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 
 import org.apache.felix.cm.MockNotCachablePersistenceManager;
 import org.apache.felix.cm.PersistenceManager;
@@ -47,7 +48,7 @@ public class PersistenceManagerProxyTest
         PersistenceManager pm = new MockNotCachablePersistenceManager();
         PersistenceManagerProxy cpm = new PersistenceManagerProxy( pm );
 
-        Dictionary dictionary = new Hashtable();
+        Dictionary dictionary = new MyHashtable();
         dictionary.put( "property1", "value1" );
         dictionary.put( Constants.SERVICE_PID, pid );
         pm.store( pid, dictionary );
@@ -55,7 +56,7 @@ public class PersistenceManagerProxyTest
         Collection<Dictionary> list = cpm.getDictionaries( filter );
         assertEquals(1, list.size());
 
-        dictionary = new Hashtable();
+        dictionary = new MyHashtable();
         dictionary.put( "property1", "value2" );
         pid = "testDefaultPersistenceManager";
         dictionary.put( Constants.SERVICE_PID, pid );

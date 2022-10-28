@@ -25,6 +25,7 @@ import java.io.StringWriter;
 import java.util.Dictionary;
 import java.util.HashSet;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -288,14 +289,14 @@ public class ConfigurationAdminUpdateStressTest extends ConfigurationTestBase im
                 ConfigurationAdmin cm = ( ConfigurationAdmin ) _tracker.waitForService( 2000 );
                 setupLatches();
                 Factory factory = new Factory();
-                Hashtable<String, Object> serviceProps = new Hashtable<String, Object>();
+                Hashtable<String, Object> serviceProps = new MyHashtable<String, Object>();
                 serviceProps.put( "service.pid", _FACTORYPID );
                 _bc.registerService( ManagedServiceFactory.class.getName(), factory, serviceProps );
 
                 for ( int l = 0; l < TEST_LOOP; l++ )
                 {
                     // Create factory configuration
-                    Hashtable<String, Object> props = new Hashtable<String, Object>();
+                    Hashtable<String, Object> props = new MyHashtable<String, Object>();
                     props.put( "foo", "bar" );
                     obtainConfiguration(cm).update( props );
 
@@ -308,7 +309,7 @@ public class ConfigurationAdminUpdateStressTest extends ConfigurationTestBase im
                     // Update factory configuration many times
                     for ( int i = 0; i < UPDATE_LOOP; i++ )
                     {
-                        props = new Hashtable<String, Object>();
+                        props = new MyHashtable<String, Object>();
                         props.put( "foo", "bar" + i );
                         props.put( "number", Long.valueOf( UPDATE_LOOP - i ) );
                         obtainConfiguration(cm).update( props );

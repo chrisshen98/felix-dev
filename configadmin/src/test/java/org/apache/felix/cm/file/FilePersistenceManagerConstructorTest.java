@@ -43,13 +43,23 @@ public class FilePersistenceManagerConstructorTest
     /** the previous working directory to return to on tearDown */
     private String oldWorkingDirectory;
 
+    public static String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    } 
+
     @Before
     public void setUp() throws Exception
     {
         String testDir = new File(TEST_WORKING_DIRECTORY).getAbsolutePath();
 
         oldWorkingDirectory = System.getProperty( "user.dir" );
+        System.out.println("[CTEST][GET-PARAM] " + "user.dir" + getStackTrace());
         System.setProperty( "user.dir", testDir );
+        System.out.println("[CTEST][SET-PARAM] " + "user.dir" + getStackTrace());
     }
 
     @After

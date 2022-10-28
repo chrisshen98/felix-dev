@@ -34,6 +34,7 @@ import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.Vector;
 
 import org.junit.After;
@@ -230,7 +231,7 @@ public class FilePersistenceManagerTest
     @Test
     public void testMultiValue() throws IOException
     {
-        Dictionary<String, Object> props = new Hashtable<>();
+        Dictionary<String, Object> props = new MyHashtable<>();
         props.put( "String", "String Value" );
         props.put( "Integer", new Integer( 2 ) );
         props.put( "Long", new Long( 2 ) );
@@ -275,7 +276,7 @@ public class FilePersistenceManagerTest
     @Test
     public void testKeyOrderInFile() throws IOException
     {
-        Dictionary<String, Object> props = new Hashtable<>();
+        Dictionary<String, Object> props = new MyHashtable<>();
         // The following keys are stored as "c, a, b" in HashTable based
         // due to their hash code
         props.put( "a_first", "a" );
@@ -307,7 +308,7 @@ public class FilePersistenceManagerTest
 
     private void check( String name, Object value ) throws IOException
     {
-        Dictionary<String, Object> props = new Hashtable<>();
+        Dictionary<String, Object> props = new MyHashtable<>();
         props.put( name, value );
 
         check( name, props );

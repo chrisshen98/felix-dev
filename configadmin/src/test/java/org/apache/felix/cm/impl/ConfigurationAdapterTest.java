@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 
 import org.apache.felix.cm.MockPersistenceManager;
 import org.apache.felix.cm.PersistenceManager;
@@ -81,7 +82,7 @@ public class ConfigurationAdapterTest
         Dictionary<String, Object> props = cimpl.getProperties();
         assertNull( "Configuration is fresh", props );
 
-        props = new Hashtable<>();
+        props = new MyHashtable<>();
         props.put( SCALAR, STRING_VALUE );
         cimpl.update( props );
 
@@ -100,7 +101,7 @@ public class ConfigurationAdapterTest
         Dictionary<String, Object> props = cimpl.getProperties();
         assertNull( "Configuration is fresh", props );
 
-        props = new Hashtable<>();
+        props = new MyHashtable<>();
         props.put( ARRAY, ARRAY_VALUE );
         cimpl.update( props );
 
@@ -136,7 +137,7 @@ public class ConfigurationAdapterTest
         Dictionary<String, Object> props = cimpl.getProperties();
         assertNull( "Configuration is fresh", props );
 
-        props = new Hashtable<>();
+        props = new MyHashtable<>();
         props.put( COLLECTION, COLLECTION_VALUE );
         cimpl.update( props );
 

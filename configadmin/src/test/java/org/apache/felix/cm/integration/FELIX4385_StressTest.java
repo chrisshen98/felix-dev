@@ -21,6 +21,7 @@ package org.apache.felix.cm.integration;
 import java.io.IOException;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -97,7 +98,7 @@ public class FELIX4385_StressTest extends ConfigurationTestBase
                     {
                         public void run()
                         {
-                            Hashtable props = new Hashtable();
+                            Hashtable props = new MyHashtable();
                             props.put(Constants.SERVICE_PID, pid);
 
                             ServiceRegistration sr = bundleContext.registerService(
@@ -107,7 +108,7 @@ public class FELIX4385_StressTest extends ConfigurationTestBase
                             try
                             {
                                 Configuration c = ca.getConfiguration(pid, null);
-                                c.update(new Hashtable()
+                                c.update(new MyHashtable()
                                 {
                                     {
                                         put("foo", "bar");

@@ -28,8 +28,10 @@ import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.util.Dictionary;
 import java.util.HashMap;
+import org.apache.felix.cm.file.MyHashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import java.util.Map;
 import java.util.Set;
 
@@ -86,7 +88,7 @@ public class ConfigurationManagerTest
         String pid = "testDefaultPersistenceManager";
 
         PersistenceManager pm =new MockPersistenceManager();
-        Dictionary<String, Object> dictionary = new Hashtable<>();
+        Dictionary<String, Object> dictionary = new MyHashtable<>();
         dictionary.put( "property1", "value1" );
         dictionary.put( Constants.SERVICE_PID, pid );
         pm.store( pid, dictionary );
@@ -98,7 +100,7 @@ public class ConfigurationManagerTest
         assertEquals(1, conf.length);
         assertEquals(2, conf[0].getProperties(true).size());
 
-        dictionary = new Hashtable<>();
+        dictionary = new MyHashtable<>();
         dictionary.put( "property1", "value2" );
         pid = "testDefaultPersistenceManager";
         dictionary.put( Constants.SERVICE_PID, pid );
@@ -116,7 +118,7 @@ public class ConfigurationManagerTest
     {
         String pid = "testDefaultPersistenceManager";
         PersistenceManager pm = new MockNotCachablePersistenceManager();
-        Dictionary<String, Object> dictionary = new Hashtable<>();
+        Dictionary<String, Object> dictionary = new MyHashtable<>();
         dictionary.put( "property1", "value1" );
         dictionary.put( Constants.SERVICE_PID, pid );
         pm.store( pid, dictionary );
@@ -128,7 +130,7 @@ public class ConfigurationManagerTest
         assertEquals(1, conf.length);
         assertEquals(2, conf[0].getProperties(true).size());
 
-        dictionary = new Hashtable<>();
+        dictionary = new MyHashtable<>();
         dictionary.put("property1", "valueNotCached");
         pid = "testDefaultPersistenceManager";
         dictionary.put( Constants.SERVICE_PID, pid );
@@ -146,7 +148,7 @@ public class ConfigurationManagerTest
     {
         String pid = "testDefaultPersistenceManager";
         PersistenceManager pm = new MockNotCachablePersistenceManager();
-        Dictionary<String, Object> dictionary = new Hashtable<>();
+        Dictionary<String, Object> dictionary = new MyHashtable<>();
         dictionary.put( "property1", "value1" );
         dictionary.put( Constants.SERVICE_PID, pid );
         pm.store( pid, dictionary );
@@ -165,7 +167,7 @@ public class ConfigurationManagerTest
         // internal changecount
         long revision = conf1[0].getRevision();
 
-        dictionary = new Hashtable<>();
+        dictionary = new MyHashtable<>();
         dictionary.put("property1", "valueNotCached");
         dictionary.put( Constants.SERVICE_PID, pid );
         conf1[0].update(dictionary);
@@ -178,7 +180,7 @@ public class ConfigurationManagerTest
 
         assertEquals(revision + 1, conf2[0].getRevision());
 
-        dictionary = new Hashtable<>();
+        dictionary = new MyHashtable<>();
         dictionary.put("property1", "secondUpdate");
         dictionary.put( Constants.SERVICE_PID, pid );
         conf2[0].update(dictionary);
@@ -391,7 +393,7 @@ public class ConfigurationManagerTest
         utField.setAccessible( true );
         utField.set( configMgr, new UpdateThread( null, "Test updater" ));
 
-        Dictionary<String, Object> props = new Hashtable<>();
+        Dictionary<String, Object> props = new MyHashtable<>();
         props.put( Constants.SERVICE_PID, "org.acme.testpid" );
         ConfigurationImpl config = new ConfigurationImpl( configMgr, new MockPersistenceManager(), props );
         configMgr.updated( config, true );
@@ -431,7 +433,7 @@ public class ConfigurationManagerTest
         });
 
         final String factoryPid = "my.factory";
-        final Dictionary<String, Object> props = new Hashtable<>();
+        final Dictionary<String, Object> props = new MyHashtable<>();
         props.put("hello", "world");
 
         final ConfigurationImpl c1 = configMgr.createFactoryConfiguration(factoryPid, null);
@@ -491,7 +493,7 @@ public class ConfigurationManagerTest
         });
 
         final String factoryPid = "my.factory";
-        final Dictionary<String, Object> props = new Hashtable<>();
+        final Dictionary<String, Object> props = new MyHashtable<>();
         props.put("hello", "world");
 
         final Configuration c1 = admin.getFactoryConfiguration(factoryPid, "1", null);
@@ -585,7 +587,7 @@ public class ConfigurationManagerTest
     private static ServiceReference[] setServiceTrackerField( ConfigurationManager configMgr,
             String fieldName, Object ... services ) throws Exception
     {
-        final Map<ServiceReference, Object> refMap = new HashMap<>();
+        final Map<ServiceReference, Object> refMap = new MyHashMap<>();
         for ( Object svc : services )
         {
             ServiceReference sref = Mockito.mock( ServiceReference.class );

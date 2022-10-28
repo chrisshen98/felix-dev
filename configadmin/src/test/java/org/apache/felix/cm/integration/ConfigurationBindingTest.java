@@ -21,6 +21,7 @@ package org.apache.felix.cm.integration;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 import junit.framework.TestCase;
 
 import org.apache.felix.cm.integration.helper.ManagedServiceFactoryTestActivator;
@@ -284,7 +285,7 @@ public class ConfigurationBindingTest extends ConfigurationTestBase
         TestCase.assertEquals( dummyLocation, config.getBundleLocation() );
 
         // 2. update configuration
-        Hashtable<String, String> props = new Hashtable<String, String>();
+        Hashtable<String, String> props = new MyHashtable<String, String>();
         props.put( PROP_NAME, PROP_NAME );
         config.update( props );
         TestCase.assertEquals( PROP_NAME, config.getProperties().get( PROP_NAME ) );
@@ -1041,7 +1042,7 @@ public class ConfigurationBindingTest extends ConfigurationTestBase
         Configuration bundleConfig2 = bundleCa.getConfiguration( pid2 );
         TestCase.assertNull(bundleConfig2.getProperties());
         TestCase.assertEquals( bundle.getLocation(), bundleConfig2.getBundleLocation() );
-        bundleConfig2.update( new Hashtable<String, String>()
+        bundleConfig2.update( new MyHashtable<String, String>()
         {
             {
                 put( "key", "value" );
@@ -1103,7 +1104,7 @@ public class ConfigurationBindingTest extends ConfigurationTestBase
         pid2 = bundleConfig2.getPid();
         TestCase.assertNull(bundleConfig2.getProperties());
         TestCase.assertEquals( bundle.getLocation(), bundleConfig2.getBundleLocation() );
-        bundleConfig2.update( new Hashtable<String, String>()
+        bundleConfig2.update( new MyHashtable<String, String>()
         {
             {
                 put( "key", "value" );

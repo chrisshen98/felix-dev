@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.cm.file.MyHashtable;
 
 import org.apache.felix.cm.integration.helper.ConfigurationListenerTestActivator;
 import org.apache.felix.cm.integration.helper.ManagedServiceFactoryTestActivator3;
@@ -124,7 +125,7 @@ public class ConfigAdminSecurityTest extends ConfigurationBaseTest
     	@SuppressWarnings({ "serial", "unused" })
     	ServiceRegistration<URLStreamHandlerService> reg = bundleContext
     	.registerService( URLStreamHandlerService.class, new NestedURLStreamHandler(), 
-    			new Hashtable<String, Object>() { {
+    			new MyHashtable<String, Object>() { {
     				put( URL_HANDLER_PROTOCOL, new String[] { "file" } );
     			} } );
     	
