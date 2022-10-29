@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import org.apache.felix.configurator.impl.MyHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +33,7 @@ public class BinaryManager implements BinaryHandler {
 
     private final List<File> allFiles = new ArrayList<>();
 
-    private final Map<String, List<File>> files = new HashMap<>();
+    private final Map<String, List<File>> files = new MyHashMap<>();
 
     private final BinUtil.ResourceProvider provider;
 

@@ -24,6 +24,7 @@ import java.io.Serializable;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import org.apache.felix.configurator.impl.MyHashtable;
 import java.util.List;
 
 public class Config implements Serializable, Comparable<Config> {
@@ -96,7 +97,7 @@ public class Config implements Serializable, Comparable<Config> {
             return null;
         }
 
-        final Dictionary<String, Object> result = new Hashtable<>();
+        final Dictionary<String, Object> result = new MyHashtable<>();
         final Enumeration<String> e = input.keys();
         while(e.hasMoreElements()) {
             final String key = e.nextElement();

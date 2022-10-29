@@ -26,13 +26,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.configurator.impl.MyHashtable;
 
 import org.junit.Test;
 
 public class ConfigTest {
 
     @Test public void testReadWrite() throws Exception {
-        final Dictionary<String, Object> props = new Hashtable<>();
+        final Dictionary<String, Object> props = new MyHashtable<>();
         props.put("x", "1");
         props.put("y", 1L);
 

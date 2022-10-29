@@ -26,6 +26,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
+import org.apache.felix.configurator.impl.MyHashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -39,9 +40,9 @@ public class State extends AbstractState implements Serializable {
 
     public static final String FILE_NAME = "state.ser";
 
-    private Map<Long, Long> bundlesLastModified = new HashMap<>();
+    private Map<Long, Long> bundlesLastModified = new MyHashMap<>();
 
-    private Map<Long, Long> bundlesConfigAdminBundleId = new HashMap<>();
+    private Map<Long, Long> bundlesConfigAdminBundleId = new MyHashMap<>();
 
     private volatile Set<String> initialHashes;
 

@@ -31,6 +31,7 @@ import java.nio.file.Files;
 import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import org.apache.felix.configurator.impl.MyHashtable;
 import java.util.Vector;
 
 import org.junit.Before;
@@ -127,11 +128,11 @@ public class ConfiguratorTest {
         when(configurationAdmin.listConfigurations("(" + Constants.SERVICE_PID + "=a)"))
                 .thenReturn(new Configuration[] { a });
 
-        final Dictionary<String, Object> aProps = new Hashtable<>();
+        final Dictionary<String, Object> aProps = new MyHashtable<>();
         aProps.put("foo", "foo");
         verify(a).updateIfDifferent(aProps);
 
-        final Dictionary<String, Object> modifiedOutside = new Hashtable<>();
+        final Dictionary<String, Object> modifiedOutside = new MyHashtable<>();
         modifiedOutside.put("foo", "bar");
         when(a.getProperties()).thenReturn(modifiedOutside);
 
@@ -161,10 +162,10 @@ public class ConfiguratorTest {
         when(configurationAdmin.listConfigurations("(" + Constants.SERVICE_PID + "=a)")).thenReturn(new Configuration[] {c1});
         when(configurationAdmin.listConfigurations("(" + Constants.SERVICE_PID + "=b)")).thenReturn(new Configuration[] {c2});
 
-        final Dictionary<String, Object> props1 = new Hashtable<>();
+        final Dictionary<String, Object> props1 = new MyHashtable<>();
         props1.put("foo", "bar");
         verify(c1).updateIfDifferent(props1);
-        final Dictionary<String, Object> props2 = new Hashtable<>();
+        final Dictionary<String, Object> props2 = new MyHashtable<>();
         props2.put("x", "y");
         verify(c2).updateIfDifferent(props2);
 
@@ -193,11 +194,11 @@ public class ConfiguratorTest {
         configurator.processAddBundle(bV1);
         configurator.process();
 
-        final Dictionary<String, Object> props1a = new Hashtable<>();
+        final Dictionary<String, Object> props1a = new MyHashtable<>();
         props1a.put("foo", "bar2");
-        final Dictionary<String, Object> props1b = new Hashtable<>();
+        final Dictionary<String, Object> props1b = new MyHashtable<>();
         props1b.put("x", "y2");
-        final Dictionary<String, Object> props1c = new Hashtable<>();
+        final Dictionary<String, Object> props1c = new MyHashtable<>();
         props1c.put("c", "1");
 
         InOrder inorder = inOrder(c1,c2,c3);
@@ -219,9 +220,9 @@ public class ConfiguratorTest {
         configurator.processAddBundle(bV2);
         configurator.process();
 
-        final Dictionary<String, Object> props2a = new Hashtable<>();
+        final Dictionary<String, Object> props2a = new MyHashtable<>();
         props2a.put("foo", "bar3");
-        final Dictionary<String, Object> props2c = new Hashtable<>();
+        final Dictionary<String, Object> props2c = new MyHashtable<>();
         props2c.put("c", "2");
 
         inorder = inOrder(c1, c2, c3);
@@ -254,17 +255,17 @@ public class ConfiguratorTest {
         when(configurationAdmin.listConfigurations("(" + Constants.SERVICE_PID + "=b)")).thenReturn(new Configuration[] {c2});
         when(configurationAdmin.listConfigurations("(" + Constants.SERVICE_PID + "=c)")).thenReturn(new Configuration[] {c3});
 
-        final Dictionary<String, Object> props1 = new Hashtable<>();
+        final Dictionary<String, Object> props1 = new MyHashtable<>();
         props1.put("foo", "bar2");
-        final Dictionary<String, Object> props2 = new Hashtable<>();
+        final Dictionary<String, Object> props2 = new MyHashtable<>();
         props2.put("x", "y2");
 
         configurator.processAddBundle(b1);
         configurator.process();
 
-        final Dictionary<String, Object> props3 = new Hashtable<>();
+        final Dictionary<String, Object> props3 = new MyHashtable<>();
         props3.put("foo", "bar");
-        final Dictionary<String, Object> props4 = new Hashtable<>();
+        final Dictionary<String, Object> props4 = new MyHashtable<>();
         props4.put("x", "y");
 
         configurator.processRemoveBundle(1);

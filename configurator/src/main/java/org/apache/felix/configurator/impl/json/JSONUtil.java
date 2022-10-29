@@ -29,7 +29,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
+import org.apache.felix.configurator.impl.MyHashMap;
 import java.util.Hashtable;
+import org.apache.felix.configurator.impl.MyHashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -148,8 +150,8 @@ public class JSONUtil {
         final String identifier = (url == null ? name : url.toString());
         try (final Reader reader = new StringReader(contents)) {
 
-            final Map<String, Integer> rankingMap = new HashMap<>();
-            final Map<String, ConfigPolicy> policyMap = new HashMap<>();
+            final Map<String, Integer> rankingMap = new MyHashMap<>();
+            final Map<String, ConfigPolicy> policyMap = new MyHashMap<>();
 
             final ConfigurationReader cfgReader = Configurations.buildReader()
                     .verifyAsBundleResource(url != null)
