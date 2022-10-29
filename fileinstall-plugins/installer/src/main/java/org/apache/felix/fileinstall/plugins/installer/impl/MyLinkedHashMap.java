@@ -1,18 +1,14 @@
-package org.apache.felix.feature.impl;
+package org.apache.felix.fileinstall.plugins.installer.impl;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedHashMap;
 
-public class MyHashMap<K,V> extends HashMap<K,V> {
+public class MyLinkedHashMap<K,V> extends LinkedHashMap<K,V> {
 
-    public MyHashMap() {
+    public MyLinkedHashMap() {
         super();
     }
-    public MyHashMap(int size) {
+    public MyLinkedHashMap(int size) {
         super(size);
-    }
-    public MyHashMap(Map m) {
-        super(m);
     }
     public String getStackTrace() {
         String stackTrace = " ";

@@ -1,18 +1,14 @@
-package org.apache.felix.feature.impl;
+package org.apache.felix.fileinstall.internal;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.IdentityHashMap;
 
-public class MyHashMap<K,V> extends HashMap<K,V> {
+public class MyIdentityHashMap<K,V> extends IdentityHashMap<K,V> {
 
-    public MyHashMap() {
+    public MyIdentityHashMap() {
         super();
     }
-    public MyHashMap(int size) {
+    public MyIdentityHashMap(int size) {
         super(size);
-    }
-    public MyHashMap(Map m) {
-        super(m);
     }
     public String getStackTrace() {
         String stackTrace = " ";

@@ -58,13 +58,13 @@ class PluginResolveContext extends ResolveContext {
     private final BundleContext bundleContext;
 
     // The repositories that will be queries for providers
-    private final Map<URI, Repository> repositories = new HashMap<>();
+    private final Map<URI, Repository> repositories = new MyHashMap<>();
     // A cache of resource->location (URL), generated during resolve and queried
     // after resolve in order to fetch the resource.
-    private final Map<Resource, String> resourceLocationMap = new IdentityHashMap<>();
+    private final Map<Resource, String> resourceLocationMap = new MyIdentityHashMap<>();
     // A cache of resources to the repositories which own them; used from
     // insertHostedCapability method.
-    private final Map<Resource, Repository> resourceRepositoryMap = new IdentityHashMap<>();
+    private final Map<Resource, Repository> resourceRepositoryMap = new MyIdentityHashMap<>();
 
     private final ResourceImpl initialResource;
     private final LogService log;
@@ -84,7 +84,7 @@ class PluginResolveContext extends ResolveContext {
 
         for (URI indexUri : request.getIndexes()) {
             // URI cachedIndexUri = getCacheIndexURI(indexUri);
-            Map<String, String> repoProps = new HashMap<>();
+            Map<String, String> repoProps = new MyHashMap<>();
             repoProps.put("locations", indexUri.toString());
             FixedIndexedRepo repo = new FixedIndexedRepo();
             repo.setRegistry(registry);
@@ -250,7 +250,7 @@ class PluginResolveContext extends ResolveContext {
 
     @Override
     public Map<Resource, Wiring> getWirings() {
-        Map<Resource, Wiring> wiringMap = new HashMap<>();
+        Map<Resource, Wiring> wiringMap = new MyHashMap<>();
         Bundle[] bundles = this.bundleContext.getBundles();
         for (Bundle bundle : bundles) {
             // BundleRevision extends Resource
@@ -285,7 +285,7 @@ class PluginResolveContext extends ResolveContext {
     }
 
     private static CapabilityImpl createIdentityCap(Resource resource, String identity) {
-        Map<String, Object> idCapAttrs = new HashMap<>();
+        Map<String, Object> idCapAttrs = new MyHashMap<>();
         idCapAttrs.put(IdentityNamespace.IDENTITY_NAMESPACE, identity);
         CapabilityImpl idCap = new CapabilityImpl(IdentityNamespace.IDENTITY_NAMESPACE, Collections.<String,String>emptyMap(),
                 idCapAttrs, resource);

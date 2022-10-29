@@ -44,7 +44,7 @@ import org.osgi.service.log.LogService;
 @Component
 public class FrameworkInstallerComponent implements FrameworkInstaller {
 
-	private final Map<Long, Set<Object>> bundleSponsors = new HashMap<>();
+	private final Map<Long, Set<Object>> bundleSponsors = new MyHashMap<>();
 
 	@Reference(cardinality = ReferenceCardinality.OPTIONAL)
 	private LogService log;

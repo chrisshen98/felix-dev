@@ -27,7 +27,7 @@ import org.osgi.resource.Resource;
 public class ResolveResultImpl implements ResolveResult {
 	
 	private final ResolveRequest request;
-	private final Map<Resource, String> resourceMap = new IdentityHashMap<>();
+	private final Map<Resource, String> resourceMap = new MyIdentityHashMap<>();
 
 	public ResolveResultImpl(ResolveRequest request) {
 		this.request = request;

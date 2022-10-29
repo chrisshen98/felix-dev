@@ -317,7 +317,7 @@ public class ConfigInstallerTest extends TestCase {
         String pid = "test";
 
         Capture<Dictionary<String, Object>> propsCapture = new Capture<>();
-        Dictionary<String, Object> props = new Hashtable<>();
+        Dictionary<String, Object> props = new MyHashtable<>();
         props.put(DirectoryWatcher.FILENAME, file.toURI().toString());
 
         EasyMock.expect(mockBundleContext.getBundle()).andReturn(mockBundle).anyTimes();
@@ -368,7 +368,7 @@ public class ConfigInstallerTest extends TestCase {
         final Configuration cachingPersistenceConfiguration = EasyMock.createMock(Configuration.class);
         EasyMock.expect(cachingPersistenceConfiguration.getAttributes()).andReturn(Collections.emptySet()).times(2);
 
-        final Dictionary<String, Object> cachedProps = new Hashtable<String, Object>() {
+        final Dictionary<String, Object> cachedProps = new MyHashtable<String, Object>() {
             {
                 put("networkInterface", "wlp3s0");
                 put(DirectoryWatcher.FILENAME, file.toURI().toString());
@@ -439,7 +439,7 @@ public class ConfigInstallerTest extends TestCase {
         EasyMock.expect(mockBundleContext.getProperty(DirectoryWatcher.CONFIG_ENCODING)).andReturn(null);
         EasyMock.expect(mockBundleContext.getProperty(DirectoryWatcher.LOG_DEFAULT)).andReturn(null);
         EasyMock.expect(mockBundleContext.getProperty(DirectoryWatcher.LOG_LEVEL)).andReturn(null);
-        EasyMock.expect(mockConfiguration.getProperties()).andReturn(new Hashtable<String, Object>());
+        EasyMock.expect(mockConfiguration.getProperties()).andReturn(new MyHashtable<String, Object>());
         EasyMock.expect(mockConfiguration.getAttributes()).andReturn(Collections.emptySet()).times(2);
         EasyMock.expect(mockConfiguration.getPid()).andReturn("firstcfg");
         EasyMock.reportMatcher(new IArgumentMatcher()
@@ -454,7 +454,7 @@ public class ConfigInstallerTest extends TestCase {
                 buffer.append("<Dictionary check: testkey present?>");
             }
         } );
-        EasyMock.expect(mockConfiguration.updateIfDifferent(new Hashtable<String, Object>())).andReturn(true);
+        EasyMock.expect(mockConfiguration.updateIfDifferent(new MyHashtable<String, Object>())).andReturn(true);
         EasyMock.expect(mockConfigurationAdmin.listConfigurations((String) EasyMock.anyObject()))
                         .andReturn(null);
         EasyMock.expect(mockConfigurationAdmin.getConfiguration("firstcfg", "?"))
@@ -557,7 +557,7 @@ public class ConfigInstallerTest extends TestCase {
         cachingPersistenceConfiguration.removeAttributes(EasyMock.anyObject(ConfigurationAttribute[].class));
         EasyMock.expectLastCall().times(2);
 
-        final Dictionary<String, Object> cachedProps = new Hashtable<String, Object>() {
+        final Dictionary<String, Object> cachedProps = new MyHashtable<String, Object>() {
             {
                 put("networkInterface", "wlp3s0");
                 put(DirectoryWatcher.FILENAME, file.toURI().toString());

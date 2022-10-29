@@ -31,8 +31,8 @@ public class CapReqBase {
 
 	public CapReqBase(String namespace, Map<String,String> directives, Map<String, Object> attribs, Resource resource) {
 		this.namespace = namespace;
-		this.directives = new HashMap<>(directives);
-		this.attribs = new HashMap<>(attribs);
+		this.directives = new MyHashMap<>(directives);
+		this.attribs = new MyHashMap<>(attribs);
 		this.resource = resource;
 	}
 

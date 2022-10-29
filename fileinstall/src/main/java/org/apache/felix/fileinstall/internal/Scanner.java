@@ -56,8 +56,8 @@ public class Scanner implements Closeable {
     final boolean recurseSubdir;
 
     // Store checksums of files or directories
-    Map<File, Long> lastChecksums = new HashMap<File, Long>();
-    Map<File, Long> storedChecksums = new HashMap<File, Long>();
+    Map<File, Long> lastChecksums = new MyHashMap<File, Long>();
+    Map<File, Long> storedChecksums = new MyHashMap<File, Long>();
 
     /**
      * Create a scanner for the specified directory

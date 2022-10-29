@@ -108,10 +108,10 @@ public class DeploymentInstaller implements ArtifactInstaller, InstallableManage
 
     // Queues for pending resolve and install operations.
     private final Queue<Job<List<Bundle>>> pendingInstalls = new LinkedList<>();
-    private final Map<File, Job<InstallableUnitImpl>> pendingResolves = new LinkedHashMap<>();
+    private final Map<File, Job<InstallableUnitImpl>> pendingResolves = new MyLinkedHashMap<>();
 
     // Currently available Installable Units, and a lock for modifying that map safely.
-    private final Map<File, InstallableUnitImpl> units = new HashMap<>();
+    private final Map<File, InstallableUnitImpl> units = new MyHashMap<>();
     private final ReadWriteLock unitsLock = new ReentrantReadWriteLock();
 
     // Listeners for install/uninstall events

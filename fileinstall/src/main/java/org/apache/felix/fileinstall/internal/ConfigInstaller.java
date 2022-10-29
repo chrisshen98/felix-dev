@@ -67,7 +67,7 @@ public class ConfigInstaller implements ArtifactInstaller, ConfigurationListener
     private final BundleContext context;
     private final ConfigurationAdmin configAdmin;
     private final FileInstall fileInstall;
-    private final Map<String, String> pidToFile = new HashMap<>();
+    private final Map<String, String> pidToFile = new MyHashMap<>();
     private final Method getFactoryConfigurationMethod;
     private final Method addAttributesMethod;
     private final Method getAttributesMethod;
@@ -350,7 +350,7 @@ public class ConfigInstaller implements ArtifactInstaller, ConfigurationListener
      */
     boolean setConfig(final File f) throws Exception
     {
-        final Hashtable<String, Object> ht = new Hashtable<>();
+        final Hashtable<String, Object> ht = new MyHashtable<>();
         final InputStream in = new BufferedInputStream(new FileInputStream(f));
         try
         {
@@ -360,7 +360,7 @@ public class ConfigInstaller implements ArtifactInstaller, ConfigurationListener
             if (isXml) {
                 final Properties p = new Properties();
                 p.loadFromXML(in);
-                Map<String, String> strMap = new HashMap<>();
+                Map<String, String> strMap = new MyHashMap<>();
                 for (Object k : p.keySet()) {
                     strMap.put(k.toString(), p.getProperty(k.toString()));
                 }
@@ -388,7 +388,7 @@ public class ConfigInstaller implements ArtifactInstaller, ConfigurationListener
         clearReadOnlyIfWritable(pid, config, f);
 
         Dictionary<String, Object> props = config.getProperties();
-        Hashtable<String, Object> old = props != null ? new Hashtable<String, Object>(new DictionaryAsMap<>(props)) : null;
+        Hashtable<String, Object> old = props != null ? new MyHashtable<String, Object>(new DictionaryAsMap<>(props)) : null;
         if (old != null) {
             old.remove( DirectoryWatcher.FILENAME );
             old.remove( Constants.SERVICE_PID );

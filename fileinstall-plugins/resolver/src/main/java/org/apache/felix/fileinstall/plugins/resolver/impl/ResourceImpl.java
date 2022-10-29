@@ -29,8 +29,8 @@ import org.osgi.resource.Resource;
 
 public class ResourceImpl implements Resource {
 
-	private final Map<String, List<Requirement>> requirements = new HashMap<>();
-	private final Map<String, List<Capability>> capabilities = new HashMap<>();
+	private final Map<String, List<Requirement>> requirements = new MyHashMap<>();
+	private final Map<String, List<Capability>> capabilities = new MyHashMap<>();
 
 	void addRequirement(Requirement req) {
 		if (req.getResource() != this) {

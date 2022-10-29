@@ -58,7 +58,7 @@ public class FileInstall implements BundleActivator, ServiceTrackerCustomizer
     final Map<ServiceReference, ArtifactListener> listeners = new TreeMap<ServiceReference, ArtifactListener>();
     final BundleTransformer bundleTransformer = new BundleTransformer();
     BundleContext context;
-    final Map<String, DirectoryWatcher> watchers = new HashMap<String, DirectoryWatcher>();
+    final Map<String, DirectoryWatcher> watchers = new MyHashMap<String, DirectoryWatcher>();
     ServiceTracker listenersTracker;
     final ReadWriteLock lock = new ReentrantReadWriteLock();
     ServiceRegistration urlHandlerRegistration;
@@ -71,7 +71,7 @@ public class FileInstall implements BundleActivator, ServiceTrackerCustomizer
 
         try
         {
-            Hashtable<String, Object> props = new Hashtable<String, Object>();
+            Hashtable<String, Object> props = new MyHashtable<String, Object>();
             props.put("url.handler.protocol", JarDirUrlHandler.PROTOCOL);
             urlHandlerRegistration = context.registerService(org.osgi.service.url.URLStreamHandlerService.class.getName(), new JarDirUrlHandler(), props);
 
@@ -92,7 +92,7 @@ public class FileInstall implements BundleActivator, ServiceTrackerCustomizer
             }
 
             // Created the initial configuration
-            Hashtable<String, String> ht = new Hashtable<String, String>();
+            Hashtable<String, String> ht = new MyHashtable<String, String>();
 
             set(ht, DirectoryWatcher.POLL);
             set(ht, DirectoryWatcher.DIR);
@@ -128,7 +128,7 @@ public class FileInstall implements BundleActivator, ServiceTrackerCustomizer
 
                     String name = "initial";
                     if (index > 0) name = name + index;
-                    updated(name, new Hashtable<String, String>(ht));
+                    updated(name, new MyHashtable<String, String>(ht));
 
                     index++;
                 }
@@ -340,7 +340,7 @@ public class FileInstall implements BundleActivator, ServiceTrackerCustomizer
         private ConfigAdminSupport(BundleContext context, FileInstall fileInstall)
         {
             tracker = new Tracker(context, fileInstall);
-            Hashtable<String, Object> props = new Hashtable<String, Object>();
+            Hashtable<String, Object> props = new MyHashtable<String, Object>();
             props.put(Constants.SERVICE_PID, tracker.getName());
             registration = context.registerService(ManagedServiceFactory.class.getName(), tracker, props);
             tracker.open();
@@ -356,7 +356,7 @@ public class FileInstall implements BundleActivator, ServiceTrackerCustomizer
 
             private final FileInstall fileInstall;
             private final Set<String> configs = Collections.synchronizedSet(new HashSet<String>());
-            private final Map<Long, ConfigInstaller> configInstallers = new HashMap<Long, ConfigInstaller>();
+            private final Map<Long, ConfigInstaller> configInstallers = new MyHashMap<Long, ConfigInstaller>();
 
             private Tracker(BundleContext bundleContext, FileInstall fileInstall)
             {
@@ -372,7 +372,7 @@ public class FileInstall implements BundleActivator, ServiceTrackerCustomizer
             public void updated(String s, Dictionary<String, ?> dictionary) throws ConfigurationException
             {
                 configs.add(s);
-                Map<String, String> props = new HashMap<String, String>();
+                Map<String, String> props = new MyHashMap<String, String>();
                 for (Enumeration<String> e = dictionary.keys(); e.hasMoreElements();) {
                     String k = e.nextElement();
                     props.put(k, dictionary.get(k).toString());

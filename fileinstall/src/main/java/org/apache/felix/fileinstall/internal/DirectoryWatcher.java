@@ -142,7 +142,7 @@ public class DirectoryWatcher extends Thread implements BundleListener
     int frameworkStartLevel;
 
     // Map of all installed artifacts
-    final Map<File, Artifact> currentManagedArtifacts = new HashMap<File, Artifact>();
+    final Map<File, Artifact> currentManagedArtifacts = new MyHashMap<File, Artifact>();
 
     // The scanner to report files changes
     Scanner scanner;
@@ -157,7 +157,7 @@ public class DirectoryWatcher extends Thread implements BundleListener
     Set<Bundle> consistentlyFailingBundles = new HashSet<Bundle>();
 
     // Represents artifacts that could not be installed
-    final Map<File, Artifact> installationFailures = new HashMap<File, Artifact>();
+    final Map<File, Artifact> installationFailures = new MyHashMap<File, Artifact>();
 
     // flag (acces to which must be synchronized) that indicates wheter there's a change in state of system,
     // which may result in an attempt to start the watched bundles
@@ -810,7 +810,7 @@ public class DirectoryWatcher extends Thread implements BundleListener
     {
         Bundle[] bundles = this.context.getBundles();
         String watchedDirPath = watchedDirectory.toURI().normalize().getPath();
-        Map<File, Long> checksums = new HashMap<File, Long>();
+        Map<File, Long> checksums = new MyHashMap<File, Long>();
         Pattern filePattern = filter == null || filter.isEmpty() ? null : Pattern.compile(filter);
         for (Bundle bundle : bundles) {
             // Convert to a URI because the location of a bundle
@@ -1335,7 +1335,7 @@ public class DirectoryWatcher extends Thread implements BundleListener
             return;
         }
         // Second pass: for each bundle, check if there is any unresolved optional package that could be resolved
-        Map<Bundle, List<Clause>> imports = new HashMap<Bundle, List<Clause>>();
+        Map<Bundle, List<Clause>> imports = new MyHashMap<Bundle, List<Clause>>();
         for (Iterator<Bundle> it = bundles.iterator(); it.hasNext(); ) {
             Bundle b = it.next();
             String importsStr = b.getHeaders().get(Constants.IMPORT_PACKAGE);

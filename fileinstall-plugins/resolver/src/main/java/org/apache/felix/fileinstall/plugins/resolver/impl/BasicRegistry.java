@@ -26,7 +26,7 @@ import aQute.bnd.service.Registry;
 
 class BasicRegistry implements Registry {
 	
-	private final Map<Class<?>, List<Object>> plugins = new HashMap<>();
+	private final Map<Class<?>, List<Object>> plugins = new MyHashMap<>();
 	
 	synchronized <T> BasicRegistry put(Class<T> clazz, T plugin) {
 		List<Object> list = plugins.get(clazz);

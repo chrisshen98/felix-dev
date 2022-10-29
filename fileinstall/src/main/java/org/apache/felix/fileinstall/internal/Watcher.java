@@ -55,9 +55,9 @@ public abstract class Watcher implements Closeable {
     private WatchService watcher;
     private PathMatcher dirMatcher;
     private PathMatcher fileMatcher;
-    private final Map<WatchKey, Path> keys = new ConcurrentHashMap<WatchKey, Path>();
+    private final Map<WatchKey, Path> keys = new MyConcurrentHashMap<WatchKey, Path>();
     private volatile long lastModified;
-    private final Map<Path, Boolean> processedMap = new ConcurrentHashMap<Path, Boolean>();
+    private final Map<Path, Boolean> processedMap = new MyConcurrentHashMap<Path, Boolean>();
 
     public void init() throws IOException {
         if (root == null) {

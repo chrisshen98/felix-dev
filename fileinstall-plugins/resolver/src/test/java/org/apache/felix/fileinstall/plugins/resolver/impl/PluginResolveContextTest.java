@@ -32,21 +32,21 @@ public class PluginResolveContextTest {
     public void testMatchRequirementsEffectiveResolve() throws Exception {
         assertTrue("effective should match: req=default, cap=default",
                 PluginResolveContext.match(createRequirement("foo", "(foo=bar)", null),
-                        createCapability("foo", null, new HashMap<String, Object>() {
+                        createCapability("foo", null, new MyHashMap<String, Object>() {
                             {
                                 put("foo", "bar");
                             }
                         })));
         assertTrue("effective should match: req=default, cap=resolve",
                 PluginResolveContext.match(createRequirement("foo", "(foo=bar)", null),
-                        createCapability("foo", "resolve", new HashMap<String, Object>() {
+                        createCapability("foo", "resolve", new MyHashMap<String, Object>() {
                             {
                                 put("foo", "bar");
                             }
                         })));
         assertTrue("effective should match: req=resolve, cap=default",
                 PluginResolveContext.match(createRequirement("foo", "(foo=bar)", "resolve"),
-                        createCapability("foo", null, new HashMap<String, Object>() {
+                        createCapability("foo", null, new MyHashMap<String, Object>() {
                             {
                                 put("foo", "bar");
                             }
@@ -66,14 +66,14 @@ public class PluginResolveContextTest {
         // effective=...
         assertTrue("effective should match: req=blah, cap=default",
                 PluginResolveContext.match(createRequirement("foo", "(foo=bar)", "blah"),
-                        createCapability("foo", null, new HashMap<String, Object>() {
+                        createCapability("foo", null, new MyHashMap<String, Object>() {
                             {
                                 put("foo", "bar");
                             }
                         })));
         assertTrue("effective should match: req=blah, cap=resolve",
                 PluginResolveContext.match(createRequirement("foo", "(foo=bar)", "blah"),
-                        createCapability("foo", "resolve", new HashMap<String, Object>() {
+                        createCapability("foo", "resolve", new MyHashMap<String, Object>() {
                             {
                                 put("foo", "bar");
                             }
@@ -85,28 +85,28 @@ public class PluginResolveContextTest {
         // Caps with effective=!resolve ONLY match reqs with the same effective
         assertTrue("effective should match: req=blah, cap=blah",
                 PluginResolveContext.match(createRequirement("foo", "(foo=bar)", "blah"),
-                        createCapability("foo", "blah", new HashMap<String, Object>() {
+                        createCapability("foo", "blah", new MyHashMap<String, Object>() {
                             {
                                 put("foo", "bar");
                             }
                         })));
         assertFalse("effective should NOT match: req=default, cap=blah",
                 PluginResolveContext.match(createRequirement("foo", "(foo=bar)", null),
-                        createCapability("foo", "blah", new HashMap<String, Object>() {
+                        createCapability("foo", "blah", new MyHashMap<String, Object>() {
                             {
                                 put("foo", "bar");
                             }
                         })));
         assertFalse("effective should NOT match: req=default, cap=blah",
                 PluginResolveContext.match(createRequirement("foo", "(foo=bar)", "resolve"),
-                        createCapability("foo", "blah", new HashMap<String, Object>() {
+                        createCapability("foo", "blah", new MyHashMap<String, Object>() {
                             {
                                 put("foo", "bar");
                             }
                         })));
         assertFalse("effective should NOT match: req=wibble, cap=blah",
                 PluginResolveContext.match(createRequirement("foo", "(foo=bar)", "wibble"),
-                        createCapability("foo", "blah", new HashMap<String, Object>() {
+                        createCapability("foo", "blah", new MyHashMap<String, Object>() {
                             {
                                 put("foo", "bar");
                             }
@@ -114,7 +114,7 @@ public class PluginResolveContextTest {
     }
 
     static RequirementImpl createRequirement(String ns, String filter, String effective) {
-        Map<String, String> directives = new HashMap<>();
+        Map<String, String> directives = new MyHashMap<>();
         if (filter != null) {
             directives.put("filter", "(foo=bar)");
         }
@@ -126,7 +126,7 @@ public class PluginResolveContextTest {
     }
 
     static CapabilityImpl createCapability(String ns, String effective, Map<String, Object> attrs) {
-        Map<String, String> directives = new HashMap<>();
+        Map<String, String> directives = new MyHashMap<>();
         if (effective != null) {
             directives.put("effective", effective);
         }

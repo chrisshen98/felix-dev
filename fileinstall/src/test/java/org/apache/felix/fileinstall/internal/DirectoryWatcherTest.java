@@ -48,7 +48,7 @@ public class DirectoryWatcherTest extends TestCase
 {
 
     private final static String TEST = "test.key";
-    Map<String, String> props = new Hashtable<String, String>();
+    Map<String, String> props = new MyHashtable<String, String>();
     DirectoryWatcher dw;
     BundleContext mockBundleContext;
     Bundle mockBundle;

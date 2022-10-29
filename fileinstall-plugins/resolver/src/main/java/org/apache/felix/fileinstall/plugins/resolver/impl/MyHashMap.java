@@ -1,4 +1,4 @@
-package org.apache.felix.feature.impl;
+package org.apache.felix.fileinstall.plugins.resolver.impl;
 
 import java.util.HashMap;
 import java.util.Map;
