@@ -34,7 +34,7 @@ public class ActivatorTest {
     @SuppressWarnings("unchecked")
     @Test
     public void testStart() throws Exception {
-        final Dictionary<String, Object> regProps = new Hashtable<>();
+        final Dictionary<String, Object> regProps = new MyHashtable<>();
 
         BundleContext ctx = Mockito.mock(BundleContext.class);
         Mockito.when(ctx.getProperty(Activator.DIR_PROPERTY)).thenReturn("/tmp/somewhere");
@@ -57,7 +57,7 @@ public class ActivatorTest {
         Activator a = new Activator();
         a.start(ctx);
 
-        Dictionary<String, Object> expected = new Hashtable<>();
+        Dictionary<String, Object> expected = new MyHashtable<>();
         expected.put(Activator.DIR_PROPERTY, "/tmp/somewhere");
         expected.put(Activator.ENCODING_PROPERTY, "UTF-8");
         expected.put(ConfigurationPlugin.CM_RANKING, Activator.PLUGIN_RANKING);

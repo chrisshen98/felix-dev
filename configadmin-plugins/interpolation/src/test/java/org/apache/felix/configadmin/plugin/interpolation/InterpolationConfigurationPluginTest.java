@@ -37,7 +37,7 @@ public class InterpolationConfigurationPluginTest {
 
         InterpolationConfigurationPlugin plugin = new InterpolationConfigurationPlugin(bc::getProperty, null, null);
 
-        Dictionary<String, Object> dict = new Hashtable<>();
+        Dictionary<String, Object> dict = new MyHashtable<>();
         dict.put("someprop", "$[prop:foo.bar]");
         dict.put("nope", "$[blah:blah]");
         dict.put("self.reference", "$[conf:someprop] foo");
@@ -79,7 +79,7 @@ public class InterpolationConfigurationPluginTest {
         InterpolationConfigurationPlugin plugin = new InterpolationConfigurationPlugin(null,
                 new File(rf).getParent(), null);
 
-        Dictionary<String, Object> dict = new Hashtable<>();
+        Dictionary<String, Object> dict = new MyHashtable<>();
         dict.put("foo", "bar");
         dict.put("replaced", "$[secret:testfile]");
         dict.put("defaulted", "$[secret:not_there;default=defval123]");
@@ -113,7 +113,7 @@ public class InterpolationConfigurationPluginTest {
             userVar = "USER";
         }
 
-        Dictionary<String, Object> dict = new Hashtable<>();
+        Dictionary<String, Object> dict = new MyHashtable<>();
         dict.put("cur.user", "YY$[env:" + userVar + "]X$[env:" + userVar + "]YY");
         dict.put("someprop", "$[prop:foo.bar]");
         dict.put("nope", "$[blah:blah]");
@@ -133,7 +133,7 @@ public class InterpolationConfigurationPluginTest {
         InterpolationConfigurationPlugin plugin = new InterpolationConfigurationPlugin(null,
                 new File(rf).getParentFile().getParent(), null);
 
-        Dictionary<String, Object> dict = new Hashtable<>();
+        Dictionary<String, Object> dict = new MyHashtable<>();
         dict.put("substed", "$[secret:sub2/testfile2]");
         dict.put("not1", "$[secret:../testfile]");
         dict.put("not2", "$[secret:sub2/../../testfile.txt]");
@@ -154,7 +154,7 @@ public class InterpolationConfigurationPluginTest {
 
         assertEquals("xxla la layy", plugin.replace("akey", "xx$[secret:testfile.txt]yy", "apid", new Hashtable<>()));
         String doesNotReplace = "xx$[" + rf + "]yy";
-        assertEquals(doesNotReplace, plugin.replace("akey", doesNotReplace, "apid", new Hashtable<>()));
+        assertEquals(doesNotReplace, plugin.replace("akey", doesNotReplace, "apid", new MyHashtable<>()));
     }
 
     @Test
@@ -164,14 +164,14 @@ public class InterpolationConfigurationPluginTest {
         InterpolationConfigurationPlugin plugin = new InterpolationConfigurationPlugin(null,
                 file.getParent() + "," + file.getParentFile().getParent(), null);
 
-        assertEquals("foo", plugin.replace("akey", "foo", "apid", new Hashtable<>()));
+        assertEquals("foo", plugin.replace("akey", "foo", "apid", new MyHashtable<>()));
     }
 
     @Test
     public void testDefault() throws IOException {
         InterpolationConfigurationPlugin plugin = new InterpolationConfigurationPlugin(null, null, null);
 
-        Dictionary<String, Object> dict = new Hashtable<>();
+        Dictionary<String, Object> dict = new MyHashtable<>();
         dict.put("defaulted", "$[env:notset;default=foo]");
         dict.put("defaulted2", "$[env:notset;default=]");
         dict.put("defaulted3", "$[env:notset;default=foo=bar]");
@@ -205,7 +205,7 @@ public class InterpolationConfigurationPluginTest {
     public void testTypeConversion() throws IOException {
         InterpolationConfigurationPlugin plugin = new InterpolationConfigurationPlugin(null, null, null);
 
-        Dictionary<String, Object> dict = new Hashtable<>();
+        Dictionary<String, Object> dict = new MyHashtable<>();
         dict.put("defaulted", "$[env:notset;default=123;type=Integer]");
 
         plugin.modifyConfiguration(null, dict);
@@ -219,7 +219,7 @@ public class InterpolationConfigurationPluginTest {
         Mockito.when(bc.getProperty("foo.bar")).thenReturn("hello there");
         InterpolationConfigurationPlugin plugin = new InterpolationConfigurationPlugin(bc::getProperty, null, null);
 
-        Dictionary<String, Object> dict = new Hashtable<>();
+        Dictionary<String, Object> dict = new MyHashtable<>();
         dict.put("array", new String[] { "1", "$[prop:foo.bar]", "3" });
 
         plugin.modifyConfiguration(null, dict);
@@ -244,7 +244,7 @@ public class InterpolationConfigurationPluginTest {
                 plugin.replace("akey", "xx$[prop:foo.bar]yy$[prop:foo.bar]zz", "apid", new Hashtable<>()));
 
         assertEquals("xxla la layyhello therezz",
-                plugin.replace("akey", "xx$[secret:testfile.txt]yy$[prop:foo.bar]zz", "apid", new Hashtable<>()));
+                plugin.replace("akey", "xx$[secret:testfile.txt]yy$[prop:foo.bar]zz", "apid", new MyHashtable<>()));
     }
 
     @Test
@@ -256,7 +256,7 @@ public class InterpolationConfigurationPluginTest {
                 file.getParent() + "," + file.getParentFile().getParent(), null);
 
         assertEquals("xxhello thereyyhello therezz",
-                plugin.replace("akey", "xx$[secret:foo.bar]yy$[secret:foo.bar]zz", "apid", new Hashtable<>()));
+                plugin.replace("akey", "xx$[secret:foo.bar]yy$[secret:foo.bar]zz", "apid", new MyHashtable<>()));
 
         assertEquals("xxla la layyhello therezz",
                 plugin.replace("akey", "xx$[secret:testfile.txt]yy$[secret:foo.bar]zz", "apid", new Hashtable<>()));
@@ -269,7 +269,7 @@ public class InterpolationConfigurationPluginTest {
         Mockito.when(bc.getProperty("key")).thenReturn("foo.bar");
         InterpolationConfigurationPlugin plugin = new InterpolationConfigurationPlugin(bc::getProperty, null, null);
 
-        assertEquals("hello there", plugin.replace("akey", "$[prop:$[prop:key]]", "apid", new Hashtable<>()));
+        assertEquals("hello there", plugin.replace("akey", "$[prop:$[prop:key]]", "apid", new MyHashtable<>()));
     }
 
     @Test
@@ -289,9 +289,9 @@ public class InterpolationConfigurationPluginTest {
         InterpolationConfigurationPlugin plugin = new InterpolationConfigurationPlugin(bc::getProperty, null, null);
 
         assertArrayEquals(new Integer[] { 2000, 3000 },
-                (Integer[]) plugin.replace("key", "$[prop:foo;type=Integer[];delimiter=,]", "somepid", new Hashtable<>()));
+                (Integer[]) plugin.replace("key", "$[prop:foo;type=Integer[];delimiter=,]", "somepid", new MyHashtable<>()));
         assertArrayEquals(new Integer[] { 1, 2 },
-                (Integer[]) plugin.replace("key", "$[prop:bar;type=Integer[];delimiter=,;default=1,2]", "somepid", new Hashtable<>()));
+                (Integer[]) plugin.replace("key", "$[prop:bar;type=Integer[];delimiter=,;default=1,2]", "somepid", new MyHashtable<>()));
     }
 
     @Test
@@ -313,7 +313,7 @@ public class InterpolationConfigurationPluginTest {
         Mockito.when(bc.getProperty("foo")).thenReturn("2000,3000");
         InterpolationConfigurationPlugin plugin = new InterpolationConfigurationPlugin(bc::getProperty, null, null);
 
-        Dictionary<String, Object> dict = new Hashtable<>();
+        Dictionary<String, Object> dict = new MyHashtable<>();
         dict.put("array", new String[] {"1000", "$[prop:foo;type=String[];delimiter=,]", "4000"});
         plugin.modifyConfiguration(null, dict);
 

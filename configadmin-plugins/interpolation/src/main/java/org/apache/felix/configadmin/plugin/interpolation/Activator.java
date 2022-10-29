@@ -52,7 +52,7 @@ public class Activator implements BundleActivator {
         String encoding = context.getProperty(ENCODING_PROPERTY);
 
         ConfigurationPlugin plugin = new InterpolationConfigurationPlugin(context::getProperty, directory, encoding);
-        Dictionary<String, Object> props = new Hashtable<>();
+        Dictionary<String, Object> props = new MyHashtable<>();
         props.put(ConfigurationPlugin.CM_RANKING, PLUGIN_RANKING);
         props.put("config.plugin.id", PLUGIN_ID);
 

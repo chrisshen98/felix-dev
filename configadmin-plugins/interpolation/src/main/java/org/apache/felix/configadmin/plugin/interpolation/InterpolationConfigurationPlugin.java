@@ -58,7 +58,7 @@ class InterpolationConfigurationPlugin implements ConfigurationPlugin {
 
     private static final String DIRECTIVE_DEFAULT = "default";
 
-    private static final Map<String, Class<?>> TYPE_MAP = new HashMap<>();
+    private static final Map<String, Class<?>> TYPE_MAP = new MyHashMap<>();
     static {
         // scalar types and primitive types
         TYPE_MAP.put("String", String.class);

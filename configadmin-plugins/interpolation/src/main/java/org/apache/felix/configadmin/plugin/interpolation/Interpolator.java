@@ -166,7 +166,7 @@ public class Interpolator {
     }
 
     public static Map<String,String> parseDirectives(String value) {
-        final Map<String,String> directives = new HashMap<>();
+        final Map<String,String> directives = new MyHashMap<>();
         int index = 0;
         while ( index <= value.length()) {
             boolean split = false;
