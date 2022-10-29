@@ -24,6 +24,7 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import org.apache.felix.schematizer.impl.MyHashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -43,7 +44,7 @@ public interface Node {
         public String type;
         public String collectionType;
         public boolean isCollection;
-        public Map<String, Node.DTO> children = new HashMap<>();
+        public Map<String, Node.DTO> children = new MyHashMap<>();
     }
 
     String name();

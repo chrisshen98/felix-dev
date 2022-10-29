@@ -34,7 +34,7 @@ public class NodeImpl implements Node {
     private final String absolutePath;
 
     private NodeImpl parent;
-    private HashMap<String, NodeImpl> children = new HashMap<>();
+    private HashMap<String, NodeImpl> children = new MyHashMap<>();
     private Field field;
 
     public NodeImpl(

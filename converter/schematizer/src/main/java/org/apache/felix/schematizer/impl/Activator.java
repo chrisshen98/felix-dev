@@ -29,7 +29,7 @@ import org.osgi.framework.ServiceFactory;
 public class Activator implements BundleActivator {
     @Override
     public void start(BundleContext context) throws Exception {
-        Dictionary<String, Object> jsonProps = new Hashtable<>();
+        Dictionary<String, Object> jsonProps = new MyHashtable<>();
         jsonProps.put("mimetype", new String[] {
                 "application/json", "application/x-javascript", "text/javascript",
                 "text/x-javascript", "text/x-json" });

@@ -44,7 +44,7 @@ public class Activator implements BundleActivator {
     @Override
     public void start(BundleContext context) throws Exception {
         // JSON
-        Dictionary<String, Object> jsonProps = new Hashtable<>();
+        Dictionary<String, Object> jsonProps = new MyHashtable<>();
         jsonProps.put("mimetype", jsonArray);
         context.registerService(
                 new String[]{Serializer.class.getName(), Serializer.JsonSerializer.class.getName()}, 
@@ -56,7 +56,7 @@ public class Activator implements BundleActivator {
                 jsonProps);
 
         // YAML
-        Dictionary<String, Object> yamlProps = new Hashtable<>();
+        Dictionary<String, Object> yamlProps = new MyHashtable<>();
         yamlProps.put("mimetype", yamlArray);
         context.registerService(
                 new String[]{Serializer.class.getName(), Serializer.YamlSerializer.class.getName()}, 

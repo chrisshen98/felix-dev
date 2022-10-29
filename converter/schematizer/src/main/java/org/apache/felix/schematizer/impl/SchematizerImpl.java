@@ -41,8 +41,8 @@ import org.osgi.util.converter.TypeReference;
 import static org.apache.felix.schematizer.impl.Util.*;
 
 public class SchematizerImpl implements Schematizer, ServiceFactory<Schematizer> {
-    private final Map<String, SchemaImpl> schemas = new HashMap<>();
-    private final Map<String, Map<String, Object>> typeRules = new HashMap<>();
+    private final Map<String, SchemaImpl> schemas = new MyHashMap<>();
+    private final Map<String, Map<String, Object>> typeRules = new MyHashMap<>();
 
     @Override
     public Schematizer getService( Bundle bundle, ServiceRegistration<Schematizer> registration ) {
@@ -80,7 +80,7 @@ public class SchematizerImpl implements Schematizer, ServiceFactory<Schematizer>
 
     private Map<String, Object> rulesFor(String schemaName) {
         if (!typeRules.containsKey(schemaName))
-            typeRules.put(schemaName, new HashMap<>());
+            typeRules.put(schemaName, new MyHashMap<>());
 
         return typeRules.get(schemaName);
     }
@@ -154,7 +154,7 @@ public class SchematizerImpl implements Schematizer, ServiceFactory<Schematizer>
             String contextPath) {
         Set<String> handledFields = new HashSet<>();
 
-        Map<String, NodeImpl> result = new HashMap<>();
+        Map<String, NodeImpl> result = new MyHashMap<>();
         for (Field f : type.cls.getDeclaredFields()) {
             handleField(schemaName, f, rules, handledFields, result, contextPath);
         }

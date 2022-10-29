@@ -19,6 +19,7 @@ package org.apache.felix.serializer.impl.json;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import org.apache.felix.serializer.impl.MyLinkedHashMap;
 import java.util.Map;
 
 import org.junit.Test;
@@ -29,14 +30,14 @@ public class JsonSerializationTest {
     @Test
     @SuppressWarnings("unchecked")
     public void testComplexMapSerialization() {
-        Map<String, Object> m = new LinkedHashMap<>();
+        Map<String, Object> m = new MyLinkedHashMap<>();
         m.put("sKey", "a string");
         m.put("iKey", 42);
         m.put("bKey",  true);
         m.put("noKey", null);
         m.put("simpleArray", new int[] {1,2,3});
 
-        Map<String, Object> m1 = new LinkedHashMap<>();
+        Map<String, Object> m1 = new MyLinkedHashMap<>();
         m1.put("a", 1L);
         m1.put("b", "hello");
         m.put("simpleObject", m1);
@@ -50,7 +51,7 @@ public class JsonSerializationTest {
         assertEquals(expected, new JsonSerializerImpl().serialize(m).toString());
 
         Map<String, Object> dm = new JsonSerializerImpl().deserialize(Map.class).from(expected);
-        Map<String, Object> expected2 = new LinkedHashMap<>();
+        Map<String, Object> expected2 = new MyLinkedHashMap<>();
         expected2.put("sKey", "a string");
         expected2.put("iKey", 42L);
         expected2.put("bKey",  true);
@@ -62,11 +63,11 @@ public class JsonSerializationTest {
 
     @Test
     public void testComplexMapSerialization2() {
-        Map<String, Object> m2 = new LinkedHashMap<>();
+        Map<String, Object> m2 = new MyLinkedHashMap<>();
         m2.put("yes", Boolean.TRUE);
         m2.put("no", Collections.singletonMap("maybe", false));
 
-        Map<String, Object> cm = new LinkedHashMap<>();
+        Map<String, Object> cm = new MyLinkedHashMap<>();
         cm.put("list", Arrays.asList(
                 Collections.singletonMap("x", "y"),
                 Collections.singletonMap("x", "b")));
@@ -80,7 +81,7 @@ public class JsonSerializationTest {
 
     @Test
     public void testEmptyMapSerialization() {
-        Map<?,?> m = new LinkedHashMap<>();
+        Map<?,?> m = new MyLinkedHashMap<>();
         String expected = "{}";
         assertEquals(expected, new JsonSerializerImpl().serialize(m).toString());
         Map<?,?> m2 = new JsonSerializerImpl().deserialize(Map.class).from(expected);

@@ -17,6 +17,7 @@
 package org.apache.felix.serializer.impl.yaml;
 
 import java.util.HashMap;
+import org.apache.felix.serializer.impl.MyHashMap;
 import java.util.Map;
 
 import org.junit.After;
@@ -44,10 +45,10 @@ public class YamlSerializerTest {
 
     @Test
     public void testYAMLCodec() throws Exception {
-        Map<Object, Object> m1 = new HashMap<>();
+        Map<Object, Object> m1 = new MyHashMap<>();
         m1.put("x", true);
         m1.put("y", null);
-        Map<Object, Object> m = new HashMap<>();
+        Map<Object, Object> m = new MyHashMap<>();
         m.put(1, 11L);
         m.put("ab", "cd");
         m.put(true, m1);
@@ -73,9 +74,9 @@ public class YamlSerializerTest {
 
     @Test
     public void testCodecWithAdapter() {
-        Map<String, Foo> m1 = new HashMap<>();
+        Map<String, Foo> m1 = new MyHashMap<>();
         m1.put("f", new Foo("fofofo"));
-        Map<String, Map<String,Foo>> m = new HashMap<>();
+        Map<String, Map<String,Foo>> m = new MyHashMap<>();
         m.put("submap", m1);
 
         Converter ca = converter.newConverterBuilder().

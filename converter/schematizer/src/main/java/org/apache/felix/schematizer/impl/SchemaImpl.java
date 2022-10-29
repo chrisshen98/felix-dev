@@ -34,7 +34,7 @@ import org.osgi.util.converter.Converters;
 
 public class SchemaImpl implements Schema {
     private final String name;
-    private final HashMap<String, NodeImpl> nodes = new LinkedHashMap<>();
+    private final HashMap<String, NodeImpl> nodes = new MyLinkedHashMap<>();
 
     public SchemaImpl(String aName) {
         name = aName;
@@ -87,7 +87,7 @@ public class SchemaImpl implements Schema {
     @Override
     public Map<String, Node.DTO> toMap() {
         NodeImpl root = nodes.get("/");
-        Map<String, Node.DTO> m = new HashMap<>();
+        Map<String, Node.DTO> m = new MyHashMap<>();
         m.put("/",root.toDTO());
         return m;
     }

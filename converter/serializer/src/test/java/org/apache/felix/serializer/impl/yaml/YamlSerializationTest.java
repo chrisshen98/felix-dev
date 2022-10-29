@@ -19,6 +19,8 @@ package org.apache.felix.serializer.impl.yaml;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import org.apache.felix.serializer.impl.MyLinkedHashMap;
+
 import java.util.Map;
 
 import org.apache.felix.serializer.impl.json.JsonSerializerImpl;
@@ -30,14 +32,14 @@ public class YamlSerializationTest {
     @Test
     @SuppressWarnings("unchecked")
     public void testComplexMapSerialization() {
-        Map<String, Object> m = new LinkedHashMap<>();
+        Map<String, Object> m = new MyLinkedHashMap<>();
         m.put("sKey", "a string");
         m.put("iKey", 42);
         m.put("bKey",  true);
         m.put("noKey", null);
         m.put("simpleArray", new int[] {1,2,3});
 
-        Map<String, Object> m1 = new LinkedHashMap<>();
+        Map<String, Object> m1 = new MyLinkedHashMap<>();
         m1.put("a", 1L);
         m1.put("b", "hello");
         m.put("simpleObject", m1);
@@ -56,14 +58,14 @@ public class YamlSerializationTest {
         assertEquals(expected, new YamlSerializerImpl().serialize(m).toString().trim());
 
         Map<String, Object> dm = new YamlSerializerImpl().deserialize(Map.class).from(expected);
-        Map<String, Object> expected2 = new LinkedHashMap<>();
+        Map<String, Object> expected2 = new MyLinkedHashMap<>();
         expected2.put("sKey", "a string");
         expected2.put("iKey", 42);
         expected2.put("bKey",  true);
         expected2.put("noKey", null);
         expected2.put("simpleArray", Arrays.asList(1,2,3));
 
-        Map<String, Object> m2 = new LinkedHashMap<>();
+        Map<String, Object> m2 = new MyLinkedHashMap<>();
         m2.put("a", 1);
         m2.put("b", "hello");
         expected2.put("simpleObject", m2);
@@ -72,11 +74,11 @@ public class YamlSerializationTest {
 
     @Test
     public void testComplexMapSerialization2() {
-        Map<String, Object> m2 = new LinkedHashMap<>();
+        Map<String, Object> m2 = new MyLinkedHashMap<>();
         m2.put("yes", Boolean.TRUE);
         m2.put("no", Collections.singletonMap("maybe", false));
 
-        Map<String, Object> cm = new LinkedHashMap<>();
+        Map<String, Object> cm = new MyLinkedHashMap<>();
         cm.put("list", Arrays.asList(
                 Collections.singletonMap("x", "y"),
                 Collections.singletonMap("x", "b")));
@@ -96,7 +98,7 @@ public class YamlSerializationTest {
 
     @Test
     public void testEmptyMapSerialization() {
-        Map<?,?> m = new LinkedHashMap<>();
+        Map<?,?> m = new MyLinkedHashMap<>();
         String expected = "{}";
         assertEquals(expected, new JsonSerializerImpl().serialize(m).toString());
         Map<?,?> m2 = new JsonSerializerImpl().deserialize(Map.class).from(expected);

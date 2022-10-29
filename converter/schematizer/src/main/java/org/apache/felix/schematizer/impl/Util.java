@@ -38,7 +38,7 @@ import org.osgi.util.converter.TypeReference;
 public class Util {
     private static final Map<Class<?>, Class<?>> boxedClasses;
     static {
-        Map<Class<?>, Class<?>> m = new HashMap<>();
+        Map<Class<?>, Class<?>> m = new MyHashMap<>();
         m.put(int.class, Integer.class);
         m.put(long.class, Long.class);
         m.put(double.class, Double.class);
@@ -223,7 +223,7 @@ public class Util {
     }
 
     public static Map<String, NodeImpl> extractChildren(String path, Map<String, NodeImpl> allNodes) {
-        final Map<String, NodeImpl> children = new HashMap<>();
+        final Map<String, NodeImpl> children = new MyHashMap<>();
         for (String key : allNodes.keySet()) {
             String newKey = key.replaceFirst(path, "");
             if (!newKey.substring(1).contains("/"))
