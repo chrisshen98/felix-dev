@@ -28,7 +28,7 @@ import org.osgi.service.feature.ID;
 class BundleBuilderImpl implements FeatureBundleBuilder {
     private final ID id;
 
-    private final Map<String,Object> metadata = new LinkedHashMap<>();
+    private final Map<String,Object> metadata = new MyLinkedHashMap<>();
 
     BundleBuilderImpl(ID id) {
         this.id = id;

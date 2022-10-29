@@ -45,9 +45,9 @@ class FeatureBuilderImpl implements FeatureBuilder {
 
     private final List<FeatureBundle> bundles = new ArrayList<>();
     private final List<String> categories = new ArrayList<>();
-    private final Map<String,FeatureConfiguration> configurations = new LinkedHashMap<>();
-    private final Map<String,FeatureExtension> extensions = new LinkedHashMap<>();
-    private final Map<String,Object> variables = new LinkedHashMap<>();
+    private final Map<String,FeatureConfiguration> configurations = new MyLinkedHashMap<>();
+    private final Map<String,FeatureExtension> extensions = new MyLinkedHashMap<>();
+    private final Map<String,Object> variables = new MyLinkedHashMap<>();
 
     FeatureBuilderImpl(ID id) {
         this.id = id;

@@ -119,7 +119,7 @@ public class FeatureServiceImpl implements FeatureService {
     }
 
     private Map<String, Object> getVariables(JsonObject json) {
-		Map<String, Object> variables = new LinkedHashMap<>();
+		Map<String, Object> variables = new MyLinkedHashMap<>();
 		
     	JsonObject jo = json.getJsonObject("variables");
     	if (jo == null)
@@ -280,7 +280,7 @@ public class FeatureServiceImpl implements FeatureService {
             		.filter(jv -> jv.getValueType() == JsonValue.ValueType.OBJECT)
             		.map(jv -> (JsonObject) jv)
             		.forEach(md -> {
-            			Map<String, JsonValue> v = new HashMap<>(md);
+            			Map<String, JsonValue> v = new MyHashMap<>(md);
             			JsonString idVal = (JsonString) v.remove("id");
             			
             			ID id = getIDfromMavenCoordinates(idVal.getString());
@@ -328,7 +328,7 @@ public class FeatureServiceImpl implements FeatureService {
 
     public void writeFeature(Feature feature, Writer jsonWriter) throws IOException {
     	// LinkedHashMap to give it some order, we'd like 'id' and 'name' first.
-    	Map<String,Object> attrs = new LinkedHashMap<>();
+    	Map<String,Object> attrs = new MyLinkedHashMap<>();
     	
     	attrs.put("id", feature.getID().toString());
     	feature.getName().ifPresent(n -> attrs.put("name", n));
@@ -387,7 +387,7 @@ public class FeatureServiceImpl implements FeatureService {
 		JsonArrayBuilder ab = Json.createArrayBuilder();
 		
 		for (FeatureBundle bundle : bundles) {
-			Map<String, Object> attrs = new LinkedHashMap<>();
+			Map<String, Object> attrs = new MyLinkedHashMap<>();
 			attrs.put("id", bundle.getID().toString());
 			attrs.putAll(bundle.getMetadata());
 			ab.add(Json.createObjectBuilder(attrs));
@@ -441,7 +441,7 @@ public class FeatureServiceImpl implements FeatureService {
 			case ARTIFACTS:
 				JsonArrayBuilder arr = Json.createArrayBuilder();
 				for (FeatureArtifact art : extVal.getArtifacts()) {
-					Map<String,Object> attrs = new LinkedHashMap<>();
+					Map<String,Object> attrs = new MyLinkedHashMap<>();
 					attrs.put("id", art.getID().toString());
 					attrs.putAll(art.getMetadata());
 					arr.add(Json.createObjectBuilder(attrs)).build();

@@ -29,7 +29,7 @@ class ConfigurationBuilderImpl implements FeatureConfigurationBuilder {
     private final String p;
     private final String name;
 
-    private final Map<String,Object> values = new LinkedHashMap<>();
+    private final Map<String,Object> values = new MyLinkedHashMap<>();
 
     ConfigurationBuilderImpl(String pid) {
         this.p = pid;
