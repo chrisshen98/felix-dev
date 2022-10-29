@@ -42,7 +42,7 @@ public class Activator implements BundleActivator
         mgr = new CoordinationMgr();
 
         final ServiceFactory factory = new CoordinatorFactory(mgr);
-        final Hashtable<String, String> props = new Hashtable<String, String>();
+        final Hashtable<String, String> props = new MyHashtable<String, String>();
         props.put(Constants.SERVICE_DESCRIPTION, "Coordinator Service Implementation");
         props.put(Constants.SERVICE_VENDOR, "The Apache Software Foundation");
         coordinatorService = context.registerService(Coordinator.class.getName(), factory, props);

@@ -70,8 +70,8 @@ public class CoordinationMgr
     {
         perThreadStack = new ThreadLocal<Stack<CoordinationImpl>>();
         ctr = new AtomicLong(-1);
-        coordinations = new HashMap<Long, CoordinationImpl>();
-        participants = new IdentityHashMap<Participant, CoordinationImpl>();
+        coordinations = new MyHashMap<Long, CoordinationImpl>();
+        participants = new MyIdentityHashMap<Participant, CoordinationImpl>();
         coordinationTimer = new Timer("Coordination Timer", true);
     }
 

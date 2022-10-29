@@ -99,7 +99,7 @@ public class CoordinationImpl implements Coordination
         this.name = name;
         this.state = State.ACTIVE;
         this.participants = new ArrayList<Participant>();
-        this.variables = new HashMap<Class<?>, Object>();
+        this.variables = new MyHashMap<Class<?>, Object>();
         this.deadLine = (timeOutInMs > 0) ? System.currentTimeMillis() + timeOutInMs : 0;
         holder.setCoordination(this);
         this.holderRef = new WeakReference<CoordinationHolder>(holder);
