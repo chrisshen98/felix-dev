@@ -42,8 +42,21 @@ public class StringMap extends TreeMap<String, Object>
         this();
         for (Map.Entry<?, ?> e : map.entrySet())
         {
+            // System.out.println("[CTEST][SET-PARAM] " + e.getKey().toString() + getStackTrace());
             put(e.getKey().toString(), e.getValue());
         }
     }
+    // @Override
+    public Object get(String key) {
+        // System.out.println("[CTEST][GET-PARAM] " + key.toString() + getStackTrace());
+        return super.get(key);
+    }
+    public String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    } 
 
 }

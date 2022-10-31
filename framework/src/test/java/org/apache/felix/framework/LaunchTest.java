@@ -29,6 +29,7 @@ import org.osgi.service.resolver.Resolver;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -36,7 +37,7 @@ public class LaunchTest extends TestCase
 {
     public void testInit() throws Exception
     {
-        Map params = new HashMap();
+        Map params = new MyHashMap();
         File cacheDir = File.createTempFile("felix-cache", ".dir");
         cacheDir.delete();
         cacheDir.mkdirs();

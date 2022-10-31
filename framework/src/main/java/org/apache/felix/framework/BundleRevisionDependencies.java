@@ -29,6 +29,7 @@ import org.osgi.framework.wiring.BundleWiring;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;

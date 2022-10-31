@@ -27,6 +27,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 import junit.framework.TestCase;
@@ -57,7 +58,7 @@ public class BootLoaderTest extends TestCase
             }
         };
 
-        Map params = new HashMap();
+        Map params = new MyHashMap();
         params.put(Constants.FRAMEWORK_SYSTEMPACKAGES,
             "org.osgi.framework; version=1.4.0,"
             + "org.osgi.service.packageadmin; version=1.2.0,"

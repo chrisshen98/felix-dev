@@ -241,6 +241,7 @@ public class ConfigurationReaderImpl
     private Hashtable<String, Object> readSingleConfiguration(final String pid,
             final JsonObject propertyMap) throws IOException {
 
+        // final Hashtable<String, Object> properties = new MyHashtable<>(Configurations.newConfiguration());
         final Hashtable<String, Object> properties = Configurations.newConfiguration();
         boolean valid = true;
         for (final Map.Entry<String, JsonValue> propEntry : propertyMap.entrySet()) {

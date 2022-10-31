@@ -29,13 +29,14 @@ import org.osgi.framework.launch.Framework;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.Map;
 
 public class ServiceObjectsTest extends TestCase
 {
     public void testServiceObjects() throws Exception
     {
-        Map params = new HashMap();
+        Map params = new MyHashMap();
         File cacheDir = File.createTempFile("felix-cache", ".dir");
         cacheDir.delete();
         cacheDir.mkdirs();

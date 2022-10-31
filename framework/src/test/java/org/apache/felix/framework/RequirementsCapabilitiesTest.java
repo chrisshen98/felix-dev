@@ -24,6 +24,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.jar.JarOutputStream;
@@ -60,7 +61,7 @@ public class RequirementsCapabilitiesTest extends TestCase
 
         String cache = cacheDir.getPath();
 
-        Map<String,String> params = new HashMap<String, String>();
+        Map<String,String> params = new MyHashMap<String, String>();
         params.put("felix.cache.profiledir", cache);
         params.put("felix.cache.dir", cache);
         params.put(Constants.FRAMEWORK_STORAGE, cache);

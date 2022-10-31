@@ -186,6 +186,7 @@ public class WeakZipFileFactory
                 ZipEntry ze;
                 if (entries != null)
                 {
+                    entries = new LinkedHashMap<>(entries);
                     ze = entries.get(name);
                     if (ze == null)
                     {
@@ -229,7 +230,8 @@ public class WeakZipFileFactory
 
             try
             {
-                LinkedHashMap<String, ZipEntry> entries = getEntries(true);
+                // LinkedHashMap<String, ZipEntry> entries = getEntries(true);
+                LinkedHashMap<String, ZipEntry> entries = new LinkedHashMap<>(getEntries(true));
                 return Collections.enumeration(entries.values());
             }
             finally
@@ -247,7 +249,8 @@ public class WeakZipFileFactory
 
             try
             {
-                LinkedHashMap<String, ZipEntry> entries = getEntries(true);
+                // LinkedHashMap<String, ZipEntry> entries = getEntries(true);
+                LinkedHashMap<String, ZipEntry> entries = new LinkedHashMap<>(getEntries(true));
                 return Collections.enumeration(entries.keySet());
             }
             finally
@@ -264,7 +267,8 @@ public class WeakZipFileFactory
             LinkedHashMap<String, ZipEntry> entries = null;
             if (m_entries != null)
             {
-                entries = m_entries.get();
+                // entries = m_entries.get();
+                entries = new LinkedHashMap<>(m_entries.get());
             }
             if (entries == null && create)
             {

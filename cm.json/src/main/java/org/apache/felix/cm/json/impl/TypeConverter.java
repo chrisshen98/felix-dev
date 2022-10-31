@@ -262,13 +262,13 @@ public class TypeConverter {
 
         @Override
         public String getKey() {
-            System.out.println("[CTEST][GET-PARAM] " + this.type + getStackTrace());
+            // System.out.println("[CTEST][GET-PARAM] " + this.type + getStackTrace());
             return this.type;
         }
 
         @Override
         public JsonValue getValue() {
-            System.out.println("[CTEST][GET-PARAM] " + this.value + getStackTrace());
+            // System.out.println("[CTEST][GET-PARAM] " + this.value + getStackTrace());
             return this.value;
         }
 

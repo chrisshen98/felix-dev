@@ -19,6 +19,7 @@
 package org.apache.felix.framework;
 
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 
 import junit.framework.TestCase;
 
@@ -32,7 +33,7 @@ public class StartBundleTest extends TestCase
 {
     public void testTransientExeption() throws Exception
     {
-        HashMap<String, String> config = new HashMap<String, String>();
+        HashMap<String, String> config = new MyHashMap<String, String>();
         config.put(FelixConstants.BUNDLE_STARTLEVEL_PROP, "1");
         final Felix f = new Felix(config);
 

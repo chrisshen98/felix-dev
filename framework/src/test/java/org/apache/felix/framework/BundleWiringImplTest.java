@@ -47,6 +47,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -93,7 +94,7 @@ public class BundleWiringImplTest
         mockBundle = mock(BundleImpl.class);
 
         Logger logger = new Logger();
-        Map configMap = new HashMap();
+        Map configMap = new MyHashMap();
         List<BundleRevision> fragments = new ArrayList<BundleRevision>();
         List<BundleWire> wires = new ArrayList<BundleWire>();
         Map<String, BundleRevision> importedPkgs = new HashMap<String, BundleRevision>();

@@ -20,6 +20,7 @@ package org.apache.felix.framework.wiring;
 
 import java.util.Collections;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.Map;
 import java.util.function.Function;
 

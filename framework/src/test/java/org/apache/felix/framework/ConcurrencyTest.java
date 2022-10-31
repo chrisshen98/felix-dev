@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -77,7 +78,7 @@ public class ConcurrencyTest extends TestCase
      */
     public void testConcurrentComponents() throws Exception
     {
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new MyHashMap<String, Object>();
         params.put(Constants.FRAMEWORK_SYSTEMPACKAGES,
             "org.osgi.framework; version=1.4.0," + "org.osgi.service.packageadmin; version=1.2.0,"
                 + "org.osgi.service.startlevel; version=1.1.0," + "org.osgi.util.tracker; version=1.3.3,"

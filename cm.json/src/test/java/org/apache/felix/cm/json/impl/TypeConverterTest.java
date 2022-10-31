@@ -120,8 +120,8 @@ public class TypeConverterTest {
 
     @Test
     public void testConvertObjectToObjectNoTypeInfo() {
-        // final JsonObjectBuilder builder = Json.createObjectBuilder();
-        final MyJsonObjectBuilderImpl builder = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
+        final JsonObjectBuilder builder = Json.createObjectBuilder();
+        // final MyJsonObjectBuilderImpl builder = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
         builder.add("hello", "world");
 
         assertEquals("{\"hello\":\"world\"}", TypeConverter.convertObjectToType(builder.build(), null));
@@ -177,14 +177,16 @@ public class TypeConverterTest {
     @Test
     public void testConvertObjectArrayToObjectNoTypeInfo() {
         final JsonArrayBuilder sBuilder = Json.createArrayBuilder();
-        // final JsonObjectBuilder o1 = Json.createObjectBuilder();
-        final MyJsonObjectBuilderImpl o1 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
+        final JsonObjectBuilder o1 = Json.createObjectBuilder();
+        // final MyJsonObjectBuilderImpl o1 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
         o1.add("a", "1");
-        // final JsonObjectBuilder o2 = Json.createObjectBuilder();
-        final MyJsonObjectBuilderImpl o2 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
+        final JsonObjectBuilder o2 = Json.createObjectBuilder();
+        // final MyJsonObjectBuilderImpl o2 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
         o2.add("b", 2);
-        sBuilder.add(o1.getParent());
-        sBuilder.add(o2.getParent());
+        // sBuilder.add(o1.getParent());
+        // sBuilder.add(o2.getParent());
+        sBuilder.add(o1);
+        sBuilder.add(o2);
 
         assertArrayEquals(new String[] { "{\"a\":\"1\"}", "{\"b\":2}" },
                 (String[]) TypeConverter.convertObjectToType(sBuilder.build(), null));

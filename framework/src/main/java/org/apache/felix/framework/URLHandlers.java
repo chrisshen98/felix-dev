@@ -28,6 +28,7 @@ import java.net.URLStreamHandlerFactory;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
+import org.apache.felix.framework.util.MyConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import static org.apache.felix.framework.util.Util.putIfAbsentAndReturn;

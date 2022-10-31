@@ -21,6 +21,7 @@ package org.apache.felix.framework;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;

@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.jar.JarOutputStream;
@@ -42,7 +43,7 @@ public class UninstallBundleTest extends TestCase
     private static final int DELAY = 1000;
 
     public void testUninstallBundleCleansUpRevision() throws Exception {
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new MyHashMap<String, String>();
         params.put(Constants.FRAMEWORK_SYSTEMPACKAGES,
             "org.osgi.framework; version=1.4.0,"
             + "org.osgi.service.packageadmin; version=1.2.0,"

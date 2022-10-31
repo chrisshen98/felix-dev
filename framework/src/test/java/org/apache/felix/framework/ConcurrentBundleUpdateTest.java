@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.Proxy.Type;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
@@ -47,7 +48,7 @@ public class ConcurrentBundleUpdateTest extends TestCase
 {
     public void testConcurrentBundleUpdate() throws Exception
     {
-        Map params = new HashMap();
+        Map params = new MyHashMap();
         params.put(Constants.FRAMEWORK_SYSTEMPACKAGES,
             "org.osgi.framework; version=1.4.0,"
             + "org.osgi.service.packageadmin; version=1.2.0,"

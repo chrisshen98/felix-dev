@@ -29,6 +29,10 @@ public class ShrinkableMap<K, V> implements Map<K, V>
 
     public ShrinkableMap(Map<K, V> delegate)
     {
+        for (Map.Entry<?, ?> e : delegate.entrySet())
+        {
+            // System.out.println("[CTEST][SET-PARAM] " + e.getKey().toString() + getStackTrace());
+        }
         m_delegate = delegate;
     }
 
@@ -52,13 +56,23 @@ public class ShrinkableMap<K, V> implements Map<K, V>
         return m_delegate.containsValue(o);
     }
 
+    public String getStackTrace() {
+        String stackTrace = " ";
+        for (StackTraceElement elem: Thread.currentThread().getStackTrace()) {
+            stackTrace = stackTrace.concat(elem.getClassName() + "\t");
+        }
+        return stackTrace;
+    } 
+
     public V get(Object o)
     {
+        // System.out.println("[CTEST][GET-PARAM] " + o.toString() + getStackTrace());
         return m_delegate.get(o);
     }
 
     public V put(K k, V v)
     {
+        // System.out.println("[CTEST][GET-PARAM] " + o.toString() + getStackTrace());
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

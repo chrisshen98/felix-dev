@@ -22,7 +22,7 @@ public class MyJsonArrayBuilderImpl{
     } 
 
     public MyJsonArrayBuilderImpl add(MyJsonObjectBuilderImpl value) {
-        System.out.println("[CTEST][SET-PARAM] " + value + getStackTrace());
+        // System.out.println("[CTEST][SET-PARAM] " + value + getStackTrace());
         parent.add(value.getParent());
         return this;
     } 

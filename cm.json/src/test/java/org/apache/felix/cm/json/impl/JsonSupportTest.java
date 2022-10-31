@@ -131,22 +131,22 @@ public class JsonSupportTest {
         // sBuilder.add(o2);
 
         /* Only JsonObjectBuilder Replaced */
-        final JsonArrayBuilder sBuilder = Json.createArrayBuilder();
-        final MyJsonObjectBuilderImpl o1 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
-        o1.add("a", "1");
-        final MyJsonObjectBuilderImpl o2 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
-        o2.add("b", 2);
-        sBuilder.add(o1.getParent());
-        sBuilder.add(o2.getParent());
+        // final JsonArrayBuilder sBuilder = Json.createArrayBuilder();
+        // final MyJsonObjectBuilderImpl o1 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
+        // o1.add("a", "1");
+        // final MyJsonObjectBuilderImpl o2 = new MyJsonObjectBuilderImpl(Json.createObjectBuilder());
+        // o2.add("b", 2);
+        // sBuilder.add(o1.getParent());
+        // sBuilder.add(o2.getParent());
 
         /* Not Replaced At All */
-        // final JsonArrayBuilder sBuilder = Json.createArrayBuilder();
-        // final JsonObjectBuilder o1 = Json.createObjectBuilder();
-        // o1.add("a", "1");
-        // final JsonObjectBuilder o2 = Json.createObjectBuilder();
-        // o2.add("b", 2);
-        // sBuilder.add(o1);
-        // sBuilder.add(o2);
+        final JsonArrayBuilder sBuilder = Json.createArrayBuilder();
+        final JsonObjectBuilder o1 = Json.createObjectBuilder();
+        o1.add("a", "1");
+        final JsonObjectBuilder o2 = Json.createObjectBuilder();
+        o2.add("b", 2);
+        sBuilder.add(o1);
+        sBuilder.add(o2);
 
         assertArrayEquals(new String[] { "{\"a\":\"1\"}", "{\"b\":2}" },
                 (String[]) Configurations.convertToObject(sBuilder.build()));

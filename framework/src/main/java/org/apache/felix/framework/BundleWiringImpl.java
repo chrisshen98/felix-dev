@@ -66,6 +66,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -75,6 +76,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
+import org.apache.felix.framework.util.MyConcurrentHashMap;
 
 public class BundleWiringImpl implements BundleWiring
 {

@@ -21,13 +21,13 @@ public class MyJsonObjectBuilderImpl {
     } 
 
     public MyJsonObjectBuilderImpl add(String name, String value) {
-        System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
+        // System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
         parent.add(name, value);
         return this;
     } 
 
     public MyJsonObjectBuilderImpl add(String name, int value) {
-        System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
+        // System.out.println("[CTEST][SET-PARAM] " + name + getStackTrace());
         parent.add(name, value);
         return this;
     } 

@@ -38,6 +38,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.jar.JarOutputStream;
@@ -92,7 +93,7 @@ public class ExtensionManagerTest {
     @Test
     public void testBuildNativeCapabilities() {
         Logger logger = new Logger();
-        Map<String, String> configMap = new HashMap<String, String>();
+        Map<String, String> configMap = new MyHashMap<String, String>();
         configMap.put(FelixConstants.FELIX_VERSION_PROPERTY, "1.0");
         configMap.put(FelixConstants.FRAMEWORK_LANGUAGE, "en");
         configMap.put(FelixConstants.FRAMEWORK_PROCESSOR, "x86_64");

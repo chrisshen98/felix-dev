@@ -21,13 +21,13 @@ package org.apache.felix.framework.wiring;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.function.Function;
-
 import org.apache.felix.framework.capabilityset.SimpleFilter;
 import org.apache.felix.framework.util.Util;
 import org.apache.felix.framework.util.manifestparser.ManifestParser;
@@ -56,7 +56,7 @@ public class BundleCapabilityImpl implements BundleCapability
         }
         dirsI = (Map<String, String>) cache.apply(dirsI);
 
-        Map<String, Object> attrsI = new HashMap<>();
+        Map<String, Object> attrsI = new HashMap<>(); 
         for (Map.Entry<String, Object> entry : capability.m_attrs.entrySet())
         {
             attrsI.put((String) cache.apply(entry.getKey()), cache.apply(entry.getValue()));

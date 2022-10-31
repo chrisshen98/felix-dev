@@ -26,6 +26,7 @@ import java.net.ContentHandlerFactory;
 import java.net.URLConnection;
 import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
+import org.apache.felix.framework.util.MyConcurrentHashMap;
 
 import static org.apache.felix.framework.util.Util.putIfAbsentAndReturn;
 

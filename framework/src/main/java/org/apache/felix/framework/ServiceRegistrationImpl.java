@@ -26,6 +26,7 @@ import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import org.apache.felix.framework.util.MyHashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;

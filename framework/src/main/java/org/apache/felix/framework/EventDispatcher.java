@@ -27,6 +27,7 @@ import java.util.Dictionary;
 import java.util.EventListener;
 import java.util.EventObject;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;

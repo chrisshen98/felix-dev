@@ -24,6 +24,7 @@ import static org.mockito.Mockito.when;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.Map;
 
 import org.apache.felix.framework.cache.BundleArchive;
@@ -123,7 +124,7 @@ public class CollisionHookTest extends TestCase
         @SuppressWarnings("unchecked")
         ServiceReference<CollisionHook> chRef = Mockito.mock(ServiceReference.class);
 
-        Map<String, Object> config = new HashMap<String, Object>();
+        Map<String, Object> config = new MyHashMap<String, Object>();
         config.put(Constants.FRAMEWORK_BSNVERSION, Constants.FRAMEWORK_BSNVERSION_MANAGED);
 
         // Mock the framework

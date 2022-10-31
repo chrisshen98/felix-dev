@@ -29,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import org.apache.felix.framework.util.MyHashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -108,7 +109,7 @@ public class ConcurrentClassLoaderTest extends TestCase
 
     private static Framework createFramework(File cacheDir)
     {
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new MyHashMap<String, String>();
         params.put(Constants.FRAMEWORK_SYSTEMPACKAGES, "org.osgi.framework; version=1.4.0,"
                 + "org.osgi.service.packageadmin; version=1.2.0,"
                 + "org.osgi.service.startlevel; version=1.1.0,"
